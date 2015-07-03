@@ -1,0 +1,453 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		8973B90E1B469EB000298218 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8973B90D1B469EB000298218 /* main.m */; };
+		8973B9111B469EB000298218 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8973B9101B469EB000298218 /* AppDelegate.m */; };
+		8973B9141B469EB000298218 /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 8973B9131B469EB000298218 /* GameScene.m */; };
+		8973B9161B469EB000298218 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 8973B9151B469EB000298218 /* GameScene.sks */; };
+		8973B9191B469EB000298218 /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8973B9181B469EB000298218 /* GameViewController.m */; };
+		8973B91C1B469EB000298218 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8973B91A1B469EB000298218 /* Main.storyboard */; };
+		8973B91E1B469EB000298218 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8973B91D1B469EB000298218 /* Images.xcassets */; };
+		8973B9211B469EB000298218 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8973B91F1B469EB000298218 /* LaunchScreen.xib */; };
+		8973B92D1B469EB000298218 /* ThatBackFlipThoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8973B92C1B469EB000298218 /* ThatBackFlipThoTests.m */; };
+		8973B9381B46A41E00298218 /* CityBackground_Tile.png in Resources */ = {isa = PBXBuildFile; fileRef = 8973B9371B46A41E00298218 /* CityBackground_Tile.png */; };
+		8973B93B1B46AB8200298218 /* soil_background_tile.png in Resources */ = {isa = PBXBuildFile; fileRef = 8973B93A1B46AB8200298218 /* soil_background_tile.png */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		8973B9271B469EB000298218 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8973B9001B469EB000298218 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8973B9071B469EB000298218;
+			remoteInfo = ThatBackFlipTho;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		8973B9081B469EB000298218 /* ThatBackFlipTho.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ThatBackFlipTho.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8973B90C1B469EB000298218 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8973B90D1B469EB000298218 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		8973B90F1B469EB000298218 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		8973B9101B469EB000298218 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		8973B9121B469EB000298218 /* GameScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameScene.h; sourceTree = "<group>"; };
+		8973B9131B469EB000298218 /* GameScene.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GameScene.m; sourceTree = "<group>"; };
+		8973B9151B469EB000298218 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
+		8973B9171B469EB000298218 /* GameViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameViewController.h; sourceTree = "<group>"; };
+		8973B9181B469EB000298218 /* GameViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GameViewController.m; sourceTree = "<group>"; };
+		8973B91B1B469EB000298218 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		8973B91D1B469EB000298218 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		8973B9201B469EB000298218 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		8973B9261B469EB000298218 /* ThatBackFlipThoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ThatBackFlipThoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		8973B92B1B469EB000298218 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8973B92C1B469EB000298218 /* ThatBackFlipThoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ThatBackFlipThoTests.m; sourceTree = "<group>"; };
+		8973B9371B46A41E00298218 /* CityBackground_Tile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = CityBackground_Tile.png; path = ../../Images/CityBackground_Tile.png; sourceTree = "<group>"; };
+		8973B93A1B46AB8200298218 /* soil_background_tile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = soil_background_tile.png; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8973B9051B469EB000298218 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8973B9231B469EB000298218 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		8973B8FF1B469EB000298218 = {
+			isa = PBXGroup;
+			children = (
+				8973B90A1B469EB000298218 /* ThatBackFlipTho */,
+				8973B9291B469EB000298218 /* ThatBackFlipThoTests */,
+				8973B9091B469EB000298218 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		8973B9091B469EB000298218 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8973B9081B469EB000298218 /* ThatBackFlipTho.app */,
+				8973B9261B469EB000298218 /* ThatBackFlipThoTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		8973B90A1B469EB000298218 /* ThatBackFlipTho */ = {
+			isa = PBXGroup;
+			children = (
+				8973B90F1B469EB000298218 /* AppDelegate.h */,
+				8973B9101B469EB000298218 /* AppDelegate.m */,
+				8973B9121B469EB000298218 /* GameScene.h */,
+				8973B9131B469EB000298218 /* GameScene.m */,
+				8973B9151B469EB000298218 /* GameScene.sks */,
+				8973B9171B469EB000298218 /* GameViewController.h */,
+				8973B9181B469EB000298218 /* GameViewController.m */,
+				8973B91A1B469EB000298218 /* Main.storyboard */,
+				8973B91D1B469EB000298218 /* Images.xcassets */,
+				8973B91F1B469EB000298218 /* LaunchScreen.xib */,
+				8973B90B1B469EB000298218 /* Supporting Files */,
+			);
+			path = ThatBackFlipTho;
+			sourceTree = "<group>";
+		};
+		8973B90B1B469EB000298218 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				8973B9361B46A40700298218 /* Images */,
+				8973B90C1B469EB000298218 /* Info.plist */,
+				8973B90D1B469EB000298218 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		8973B9291B469EB000298218 /* ThatBackFlipThoTests */ = {
+			isa = PBXGroup;
+			children = (
+				8973B92C1B469EB000298218 /* ThatBackFlipThoTests.m */,
+				8973B92A1B469EB000298218 /* Supporting Files */,
+			);
+			path = ThatBackFlipThoTests;
+			sourceTree = "<group>";
+		};
+		8973B92A1B469EB000298218 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				8973B92B1B469EB000298218 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		8973B9361B46A40700298218 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				8973B93A1B46AB8200298218 /* soil_background_tile.png */,
+				8973B9371B46A41E00298218 /* CityBackground_Tile.png */,
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		8973B9071B469EB000298218 /* ThatBackFlipTho */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8973B9301B469EB000298218 /* Build configuration list for PBXNativeTarget "ThatBackFlipTho" */;
+			buildPhases = (
+				8973B9041B469EB000298218 /* Sources */,
+				8973B9051B469EB000298218 /* Frameworks */,
+				8973B9061B469EB000298218 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ThatBackFlipTho;
+			productName = ThatBackFlipTho;
+			productReference = 8973B9081B469EB000298218 /* ThatBackFlipTho.app */;
+			productType = "com.apple.product-type.application";
+		};
+		8973B9251B469EB000298218 /* ThatBackFlipThoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8973B9331B469EB000298218 /* Build configuration list for PBXNativeTarget "ThatBackFlipThoTests" */;
+			buildPhases = (
+				8973B9221B469EB000298218 /* Sources */,
+				8973B9231B469EB000298218 /* Frameworks */,
+				8973B9241B469EB000298218 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8973B9281B469EB000298218 /* PBXTargetDependency */,
+			);
+			name = ThatBackFlipThoTests;
+			productName = ThatBackFlipThoTests;
+			productReference = 8973B9261B469EB000298218 /* ThatBackFlipThoTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		8973B9001B469EB000298218 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0620;
+				ORGANIZATIONNAME = 200GO;
+				TargetAttributes = {
+					8973B9071B469EB000298218 = {
+						CreatedOnToolsVersion = 6.2;
+					};
+					8973B9251B469EB000298218 = {
+						CreatedOnToolsVersion = 6.2;
+						TestTargetID = 8973B9071B469EB000298218;
+					};
+				};
+			};
+			buildConfigurationList = 8973B9031B469EB000298218 /* Build configuration list for PBXProject "ThatBackFlipTho" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 8973B8FF1B469EB000298218;
+			productRefGroup = 8973B9091B469EB000298218 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8973B9071B469EB000298218 /* ThatBackFlipTho */,
+				8973B9251B469EB000298218 /* ThatBackFlipThoTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		8973B9061B469EB000298218 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8973B9211B469EB000298218 /* LaunchScreen.xib in Resources */,
+				8973B91E1B469EB000298218 /* Images.xcassets in Resources */,
+				8973B93B1B46AB8200298218 /* soil_background_tile.png in Resources */,
+				8973B9161B469EB000298218 /* GameScene.sks in Resources */,
+				8973B9381B46A41E00298218 /* CityBackground_Tile.png in Resources */,
+				8973B91C1B469EB000298218 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8973B9241B469EB000298218 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8973B9041B469EB000298218 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8973B9191B469EB000298218 /* GameViewController.m in Sources */,
+				8973B9111B469EB000298218 /* AppDelegate.m in Sources */,
+				8973B9141B469EB000298218 /* GameScene.m in Sources */,
+				8973B90E1B469EB000298218 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8973B9221B469EB000298218 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8973B92D1B469EB000298218 /* ThatBackFlipThoTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		8973B9281B469EB000298218 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8973B9071B469EB000298218 /* ThatBackFlipTho */;
+			targetProxy = 8973B9271B469EB000298218 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		8973B91A1B469EB000298218 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8973B91B1B469EB000298218 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		8973B91F1B469EB000298218 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8973B9201B469EB000298218 /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		8973B92E1B469EB000298218 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		8973B92F1B469EB000298218 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		8973B9311B469EB000298218 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = ThatBackFlipTho/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		8973B9321B469EB000298218 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = ThatBackFlipTho/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		8973B9341B469EB000298218 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = ThatBackFlipThoTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ThatBackFlipTho.app/ThatBackFlipTho";
+			};
+			name = Debug;
+		};
+		8973B9351B469EB000298218 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = ThatBackFlipThoTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ThatBackFlipTho.app/ThatBackFlipTho";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		8973B9031B469EB000298218 /* Build configuration list for PBXProject "ThatBackFlipTho" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8973B92E1B469EB000298218 /* Debug */,
+				8973B92F1B469EB000298218 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8973B9301B469EB000298218 /* Build configuration list for PBXNativeTarget "ThatBackFlipTho" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8973B9311B469EB000298218 /* Debug */,
+				8973B9321B469EB000298218 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		8973B9331B469EB000298218 /* Build configuration list for PBXNativeTarget "ThatBackFlipThoTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8973B9341B469EB000298218 /* Debug */,
+				8973B9351B469EB000298218 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 8973B9001B469EB000298218 /* Project object */;
+}
