@@ -10,46 +10,171 @@
 
 @implementation GameScene
 
+//---------------------------------------------------------------
 -(void)didMoveToView:(SKView *)view {
-    /* Setup your scene here */
-//    SKLabelNode *myLabel = [SKLabelNode labelNodeWithFontNamed:@"Chalkduster"];
-//    
-//    myLabel.text = @"Hello, World!";
-//    myLabel.fontSize = 65;
-//    myLabel.position = CGPointMake(CGRectGetMidX(self.frame),
-//                                   CGRectGetMidY(self.frame));
-//    
-//    [self addChild:myLabel];
-}
-
--(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-    /* Called when a touch begins */
     
-//    for (UITouch *touch in touches) {
-//        CGPoint location = [touch locationInNode:self];
-//        
-//        SKSpriteNode *sprite = [SKSpriteNode spriteNodeWithImageNamed:@"Spaceship"];
-//        
-//        sprite.xScale = 0.5;
-//        sprite.yScale = 0.5;
-//        sprite.position = location;
-//        
-//        SKAction *action = [SKAction rotateByAngle:M_PI duration:1];
-//        
-//        [sprite runAction:[SKAction repeatActionForever:action]];
-//        
-//        [self addChild:sprite];
-//    }
+    [self prepareGroundToMove];
+    [self prepareCityToMove];
+    
+    _groundHeight = _ground_01.frame.origin.y + _ground_01.frame.size.height;
 }
 
--(void)update:(CFTimeInterval)currentTime {
-    /* Called before each frame is rendered */
-    SKNode* ground = [self childNodeWithName:@"ground"];
-    SKNode* backgroundNode = [self childNodeWithName:@"Background"];
-    if(backgroundNode != NULL) {
-        backgroundNode.position = CGPointMake(backgroundNode.position.x - 0.3, backgroundNode.position.y);
+//---------------------------------------------------------------
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+
+}
+
+//---------------------------------------------------------------
+- (BOOL) checkOutFromScreen:(SKNode*) sprite {
+    CGFloat offset = sprite.position.x;
+    if(offset < -sprite.frame.size.width/2 + 1) {
+        return YES;
     }
-    ground.position = CGPointMake(ground.position.x - 2, ground.position.y);
+    return NO;
+}
+
+//---------------------------------------------------------------
+-(void)update:(CFTimeInterval)currentTime {
+    //Проверяем вышла ли земля за границы экрана а затем перекидываем е> вначало очереди на показ
+    if([self checkOutFromScreen:_ground_01] == YES) {
+        _ground_01.position = CGPointMake(_ground_02.position.x + _ground_02.frame.size.width, _ground_01.position.y);
+    }
+    if([self checkOutFromScreen:_ground_02] == YES) {
+        _ground_02.position = CGPointMake(_ground_01.position.x + _ground_01.frame.size.width, _ground_02.position.y);
+    }
+    
+    ////////////////////////////////////////////////////////////////////////
+    if([self checkOutFromScreen:_cityBackgroundFirst_01] == YES) {
+        _cityBackgroundFirst_01.position = CGPointMake(_cityBackgroundFirst_02.position.x + _cityBackgroundFirst_02.frame.size.width, _cityBackgroundFirst_01.position.y);
+    }
+    if([self checkOutFromScreen:_cityBackgroundFirst_02] == YES) {
+        _cityBackgroundFirst_02.position = CGPointMake(_cityBackgroundFirst_01.position.x + _cityBackgroundFirst_01.frame.size.width, _cityBackgroundFirst_02.position.y);
+    }
+    
+    ////////////////////////////////////////////////////////////////////////
+    if([self checkOutFromScreen:_cityBackgroundSecond_01] == YES) {
+        _cityBackgroundSecond_01.position = CGPointMake(_cityBackgroundSecond_02.position.x + _cityBackgroundSecond_02.frame.size.width, _cityBackgroundSecond_01.position.y);
+    }
+    if([self checkOutFromScreen:_cityBackgroundSecond_02] == YES) {
+        _cityBackgroundSecond_02.position = CGPointMake(_cityBackgroundSecond_01.position.x + _cityBackgroundSecond_01.frame.size.width, _cityBackgroundSecond_02.position.y);
+    }
+    
+    
+    ////////////////////////////////////////////////////////////////////////
+    if([self checkOutFromScreen:_cityBackgroundThird_01] == YES) {
+        _cityBackgroundThird_01.position = CGPointMake(_cityBackgroundThird_02.position.x + _cityBackgroundThird_02.frame.size.width, _cityBackgroundThird_01.position.y);
+    }
+    if([self checkOutFromScreen:_cityBackgroundThird_02] == YES) {
+        _cityBackgroundThird_02.position = CGPointMake(_cityBackgroundThird_01.position.x + _cityBackgroundThird_01.frame.size.width, _cityBackgroundThird_02.position.y);
+    }
+    
+    ////////////////////////////////////////////////////////////////////////
+    if([self checkOutFromScreen:_cityFarBackgroundFirst_01] == YES) {
+        _cityFarBackgroundFirst_01.position = CGPointMake(_cityFarBackgroundFirst_02.position.x + _cityFarBackgroundFirst_02.frame.size.width, _cityFarBackgroundFirst_01.position.y);
+    }
+    if([self checkOutFromScreen:_cityFarBackgroundFirst_02] == YES) {
+        _cityFarBackgroundFirst_02.position = CGPointMake(_cityFarBackgroundFirst_01.position.x + _cityFarBackgroundFirst_01.frame.size.width, _cityFarBackgroundFirst_02.position.y);
+    }
+    
+    ////////////////////////////////////////////////////////////////////////
+    if([self checkOutFromScreen:_cityFarBackgroundSecond_01] == YES) {
+        _cityFarBackgroundSecond_01.position = CGPointMake(_cityBackgroundThird_02.position.x + _cityBackgroundThird_02.frame.size.width, _cityFarBackgroundSecond_01.position.y);
+    }
+    if([self checkOutFromScreen:_cityFarBackgroundSecond_02] == YES) {
+        _cityFarBackgroundSecond_02.position = CGPointMake(_cityFarBackgroundSecond_01.position.x + _cityFarBackgroundSecond_02.frame.size.width, _cityFarBackgroundSecond_02.position.y);
+    }
+    
+}
+
+
+//---------------------------------------------------------------
+//Описание:
+//Функция подготавливает элементы земли к бесконечному перемещению
+- (void) prepareGroundToMove {
+    self.ground_01 = [self childNodeWithName:@"ground_01"];
+    self.ground_02 = [self childNodeWithName:@"ground_02"];
+    SKAction* moveGround01Sprite = [SKAction moveByX:-_ground_01.frame.size.width * 50 y:0 duration:0.1 * _ground_01.frame.size.width * 2];
+    SKAction* moveGround02Sprite = [SKAction moveByX:-_ground_02.frame.size.width * 50 y:0 duration:0.1 * _ground_02.frame.size.width * 2];
+    
+    [_ground_01 runAction:moveGround01Sprite];
+    [_ground_02 runAction:moveGround02Sprite];
+}
+
+//---------------------------------------------------------------
+- (void) prepareCityToMove {
+    //Make a sorite nodes
+    self.cityBackgroundFirst_01 = [SKSpriteNode spriteNodeWithTexture:[SKTexture textureWithImageNamed:@"city_first_layer.png"]];
+    self.cityBackgroundFirst_02 = [SKSpriteNode spriteNodeWithTexture:[SKTexture textureWithImageNamed:@"city_first_layer.png"]];
+    
+    self.cityBackgroundSecond_01 = [SKSpriteNode spriteNodeWithImageNamed:@"city_second_layer"];
+    self.cityBackgroundSecond_02 = [SKSpriteNode spriteNodeWithImageNamed:@"city_second_layer"];
+    
+    self.cityBackgroundThird_01 = [SKSpriteNode spriteNodeWithImageNamed:@"city_tred_layer"];
+    self.cityBackgroundThird_02 = [SKSpriteNode spriteNodeWithImageNamed:@"city_tred_layer"];
+    
+    self.cityFarBackgroundFirst_01 = [SKSpriteNode spriteNodeWithImageNamed:@"city_bacground_first_layer"];
+    self.cityFarBackgroundFirst_02 = [SKSpriteNode spriteNodeWithImageNamed:@"city_bacground_first_layer"];
+
+    self.cityFarBackgroundSecond_01 = [SKSpriteNode spriteNodeWithImageNamed:@"city_bacground_second_layer"];
+    self.cityFarBackgroundSecond_02 = [SKSpriteNode spriteNodeWithImageNamed:@"city_bacground_second_layer"];
+    
+    //Create a sprite actions
+    SKAction* moveCityFirst_01 = [SKAction moveByX:-self.cityBackgroundFirst_01.frame.size.width * 50 y:0 duration:0.1 * self.cityBackgroundFirst_01.frame.size.width * 2];
+    SKAction* moveCityFirst_02 = [SKAction moveByX:-self.cityBackgroundFirst_02.frame.size.width * 50 y:0 duration:0.1 * self.cityBackgroundFirst_02.frame.size.width * 2];
+    
+    SKAction* moveCitySecond_01 = [SKAction moveByX:-self.cityBackgroundSecond_01.frame.size.width * 35 y:0 duration:0.1 * self.cityBackgroundSecond_01.frame.size.width * 2];
+    SKAction* moveCitySecond_02 = [SKAction moveByX:-self.cityBackgroundSecond_02.frame.size.width * 35 y:0 duration:0.1 * self.cityBackgroundSecond_02.frame.size.width * 2];
+    
+    SKAction* moveCityThrid_01 = [SKAction moveByX:-self.cityBackgroundThird_01 .frame.size.width * 15 y:0 duration:0.1 * self.cityBackgroundThird_01 .frame.size.width * 2];
+    SKAction* moveCityThrid_02 = [SKAction moveByX:-self.cityBackgroundThird_02.frame.size.width * 15 y:0 duration:0.1 * self.cityBackgroundThird_02.frame.size.width * 2];
+    
+    SKAction* moveFarCityFirst_01 = [SKAction moveByX:-self.cityFarBackgroundFirst_01.frame.size.width * 10 y:0 duration:0.1 * self.cityFarBackgroundFirst_01.frame.size.width * 2];
+    SKAction* moveFarCityFirst_02 = [SKAction moveByX:-self.cityFarBackgroundFirst_02.frame.size.width * 10 y:0 duration:0.1 * self.cityFarBackgroundFirst_02.frame.size.width * 2];
+
+    SKAction* moveFarCitySecond_01 = [SKAction moveByX:-self.cityFarBackgroundSecond_01.frame.size.width * 5 y:0 duration:0.1 * self.cityFarBackgroundSecond_01.frame.size.width * 2];
+    SKAction* moveFarCitySecond_02 = [SKAction moveByX:-self.cityFarBackgroundSecond_02.frame.size.width * 5 y:0 duration:0.1 * self.cityFarBackgroundSecond_02.frame.size.width * 2];
+
+
+    //Run actions
+    [self.cityBackgroundFirst_01 runAction:moveCityFirst_01];
+    [self.cityBackgroundFirst_02 runAction:moveCityFirst_02];
+    
+    [self.cityBackgroundSecond_01 runAction:moveCitySecond_01];
+    [self.cityBackgroundSecond_02 runAction:moveCitySecond_02];
+    
+    [self.cityBackgroundThird_01 runAction:moveCityThrid_01];
+    [self.cityBackgroundThird_02 runAction:moveCityThrid_02];
+    
+    [self.cityFarBackgroundFirst_01 runAction:moveFarCityFirst_01];
+    [self.cityFarBackgroundFirst_02 runAction:moveFarCityFirst_02];
+    
+    [self.cityFarBackgroundSecond_01 runAction:moveFarCitySecond_01];
+    [self.cityFarBackgroundSecond_02 runAction:moveFarCitySecond_02];
+    
+    
+    //Assign initial position
+    [_cityBackgroundFirst_01 setPosition:CGPointMake(_cityBackgroundFirst_01.frame.size.width / 2, _groundHeight)];
+    [_cityBackgroundFirst_02 setPosition:CGPointMake(_cityBackgroundFirst_01.frame.origin.x + _cityBackgroundFirst_01.frame.size.width, _groundHeight)];
+    
+    [_cityBackgroundFirst_01 physicsBody].pinned = YES;
+    [_cityBackgroundFirst_01 physicsBody].dynamic = NO;
+    [_cityBackgroundFirst_01 physicsBody].affectedByGravity = NO;
+    [_cityBackgroundFirst_01 physicsBody].allowsRotation = NO;
+    [_cityBackgroundFirst_02 physicsBody].pinned = YES;
+    
+    //Add sprites as child to scene
+    [self addChild:_cityBackgroundFirst_01];
+    [self addChild:_cityBackgroundFirst_02];
+    [self addChild:_cityBackgroundSecond_01];
+    [self addChild:_cityBackgroundSecond_02];
+    [self addChild:_cityBackgroundThird_01];
+    [self addChild:_cityBackgroundThird_02];
+    [self addChild:_cityFarBackgroundFirst_01];
+    [self addChild:_cityFarBackgroundFirst_02];
+    [self addChild:_cityFarBackgroundSecond_01];
+    [self addChild:_cityFarBackgroundSecond_02];
 }
 
 @end
+
+

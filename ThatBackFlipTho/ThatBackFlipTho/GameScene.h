@@ -10,4 +10,31 @@
 
 @interface GameScene : SKScene
 
+//Группа элементов земли
+@property (nonatomic, strong) SKNode* ground_01;
+@property (nonatomic, strong) SKNode* ground_02;
+
+//Темносиний слой фона города
+@property (nonatomic, strong) SKNode* cityFarBackgroundFirst_01;
+@property (nonatomic, strong) SKNode* cityFarBackgroundFirst_02;
+
+//Светлосиний слой фона города
+@property (nonatomic, strong) SKNode* cityFarBackgroundSecond_01;
+@property (nonatomic, strong) SKNode* cityFarBackgroundSecond_02;
+
+//Дальний слой города
+@property (nonatomic, strong) SKNode* cityBackgroundThird_01;
+@property (nonatomic, strong) SKNode* cityBackgroundThird_02;
+
+//Средний слой города
+@property (nonatomic, strong) SKNode* cityBackgroundSecond_01;
+@property (nonatomic, strong) SKNode* cityBackgroundSecond_02;
+
+//ближний слой города
+@property (nonatomic, strong) SKNode* cityBackgroundFirst_01;
+@property (nonatomic, strong) SKNode* cityBackgroundFirst_02;
+
+
+@property (nonatomic, assign) CGFloat groundHeight;
+
 @end
