@@ -7,14 +7,14 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>94299B15-C9AD-41D5-B5D1-F7A2E0D40425</string>
 	<key>IDESourceControlProjectName</key>
-	<string>ThatBackFlipTho</string>
+	<string>project</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>AE2E93509EC65134369C3ECD50C0F5F54268F7C4</key>
 		<string>https://github.com/maxveras/BackFlipTho.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>ThatBackFlipTho/ThatBackFlipTho.xcodeproj</string>
+	<string>ThatBackFlipTho/ThatBackFlipTho.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>AE2E93509EC65134369C3ECD50C0F5F54268F7C4</key>
@@ -34,7 +34,7 @@
 			<key>IDESourceControlWCCIdentifierKey</key>
 			<string>AE2E93509EC65134369C3ECD50C0F5F54268F7C4</string>
 			<key>IDESourceControlWCCName</key>
-			<string>Project_BackFlip</string>
+			<string>BackFlipTho</string>
 		</dict>
 	</array>
 </dict>

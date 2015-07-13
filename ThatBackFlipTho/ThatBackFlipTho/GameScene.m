@@ -15,8 +15,9 @@
     
     [self prepareGroundToMove];
     [self prepareCityToMove];
+    [self prepareCityPositionAndScale];
     
-    _groundHeight = _ground_01.frame.origin.y + _ground_01.frame.size.height;
+    _groundHeight = _ground_01.frame.size.height;
 }
 
 //---------------------------------------------------------------
@@ -134,7 +135,7 @@
     SKAction* moveFarCitySecond_01 = [SKAction moveByX:-self.cityFarBackgroundSecond_01.frame.size.width * 5 y:0 duration:0.1 * self.cityFarBackgroundSecond_01.frame.size.width * 2];
     SKAction* moveFarCitySecond_02 = [SKAction moveByX:-self.cityFarBackgroundSecond_02.frame.size.width * 5 y:0 duration:0.1 * self.cityFarBackgroundSecond_02.frame.size.width * 2];
 
-
+    
     //Run actions
     [self.cityBackgroundFirst_01 runAction:moveCityFirst_01];
     [self.cityBackgroundFirst_02 runAction:moveCityFirst_02];
@@ -150,29 +151,59 @@
     
     [self.cityFarBackgroundSecond_01 runAction:moveFarCitySecond_01];
     [self.cityFarBackgroundSecond_02 runAction:moveFarCitySecond_02];
-    
-    
+}
+
+//----------------------------------------------------
+-(void) prepareCityPositionAndScale {
     //Assign initial position
-    [_cityBackgroundFirst_01 setPosition:CGPointMake(_cityBackgroundFirst_01.frame.size.width / 2, _groundHeight)];
-    [_cityBackgroundFirst_02 setPosition:CGPointMake(_cityBackgroundFirst_01.frame.origin.x + _cityBackgroundFirst_01.frame.size.width, _groundHeight)];
+    [_cityBackgroundFirst_01 setScale:0.5];
+    [_cityBackgroundFirst_02 setScale:0.5];
     
-    [_cityBackgroundFirst_01 physicsBody].pinned = YES;
-    [_cityBackgroundFirst_01 physicsBody].dynamic = NO;
-    [_cityBackgroundFirst_01 physicsBody].affectedByGravity = NO;
-    [_cityBackgroundFirst_01 physicsBody].allowsRotation = NO;
-    [_cityBackgroundFirst_02 physicsBody].pinned = YES;
+    [_cityBackgroundSecond_01 setScale:0.5];
+    [_cityBackgroundSecond_02 setScale:0.5];
+    
+    [_cityBackgroundThird_01 setScale:0.5];
+    [_cityBackgroundThird_02 setScale:0.5];
+    
+    [_cityFarBackgroundFirst_01 setScale:0.5];
+    [_cityFarBackgroundFirst_02 setScale:0.5];
+    
+    [_cityFarBackgroundSecond_01 setScale:0.5];
+    [_cityFarBackgroundSecond_02 setScale:0.5];
+    
+    
+    [_cityBackgroundFirst_01 setPosition:CGPointMake(_cityBackgroundFirst_01.frame.size.width / 2, _groundHeight + _cityBackgroundFirst_01.frame.size.height * 1.65)];
+    [_cityBackgroundFirst_02 setPosition:CGPointMake(_cityBackgroundFirst_01.frame.origin.x + _cityBackgroundFirst_01.frame.size.width, _groundHeight +  _cityBackgroundFirst_02.frame.size.height * 1.65)];
+
+    
+    [_cityBackgroundSecond_01 setPosition:CGPointMake(_cityBackgroundSecond_01.frame.size.width / 2, _groundHeight + _cityBackgroundSecond_01.frame.size.height )];
+    [_cityBackgroundSecond_02 setPosition:CGPointMake(_cityBackgroundSecond_02.frame.origin.x + _cityBackgroundSecond_02.frame.size.width, _groundHeight +  _cityBackgroundSecond_02.frame.size.height)];
+    
+    [_cityBackgroundThird_01 setPosition:CGPointMake(_cityBackgroundThird_01.frame.size.width / 2, _groundHeight + _cityBackgroundThird_01.frame.size.height )];
+    [_cityBackgroundThird_02 setPosition:CGPointMake(_cityBackgroundThird_02.frame.origin.x + _cityBackgroundThird_02.frame.size.width, _groundHeight +  _cityBackgroundThird_02.frame.size.height)];
+    
+    [_cityFarBackgroundFirst_01 setPosition:CGPointMake(_cityFarBackgroundFirst_01.frame.size.width / 2, _groundHeight + _cityFarBackgroundFirst_01.frame.size.height * 1.5)];
+    [_cityFarBackgroundFirst_02 setPosition:CGPointMake(_cityFarBackgroundFirst_02.frame.origin.x + _cityFarBackgroundFirst_02.frame.size.width, _groundHeight +  _cityFarBackgroundFirst_02.frame.size.height * 1.5)];
+    
+    [_cityFarBackgroundSecond_01 setPosition:CGPointMake(_cityFarBackgroundSecond_01.frame.size.width / 2, _groundHeight + _cityFarBackgroundSecond_01.frame.size.height * 1.1)];
+    [_cityFarBackgroundSecond_02 setPosition:CGPointMake(_cityFarBackgroundSecond_02.frame.origin.x + _cityFarBackgroundSecond_02.frame.size.width, _groundHeight +  _cityFarBackgroundSecond_02.frame.size.height * 1.1)];
     
     //Add sprites as child to scene
-    [self addChild:_cityBackgroundFirst_01];
-    [self addChild:_cityBackgroundFirst_02];
-    [self addChild:_cityBackgroundSecond_01];
-    [self addChild:_cityBackgroundSecond_02];
-    [self addChild:_cityBackgroundThird_01];
-    [self addChild:_cityBackgroundThird_02];
-    [self addChild:_cityFarBackgroundFirst_01];
-    [self addChild:_cityFarBackgroundFirst_02];
     [self addChild:_cityFarBackgroundSecond_01];
     [self addChild:_cityFarBackgroundSecond_02];
+    
+    [self addChild:_cityFarBackgroundFirst_01];
+    [self addChild:_cityFarBackgroundFirst_02];
+
+    [self addChild:_cityBackgroundThird_01];
+    [self addChild:_cityBackgroundThird_02];
+    [self addChild:_cityBackgroundSecond_01];
+    [self addChild:_cityBackgroundSecond_02];
+
+
+    
+    [self addChild:_cityBackgroundFirst_01];
+    [self addChild:_cityBackgroundFirst_02];
 }
 
 @end
