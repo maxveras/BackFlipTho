@@ -18,6 +18,20 @@
     [self prepareCityPositionAndScale];
     
     _groundHeight = _ground_01.frame.size.height;
+    
+    //_bach = [SKSpriteNode spriteNodeWithImageNamed:@"kingBach_01"];
+    //[_bach setPosition:CGPointMake(50, _groundHeight + 100)];
+    _bach = [self childNodeWithName:@"bach"];
+    //[_bach setScale:0.5f];
+    
+    SKTextureAtlas* atlas = [SKTextureAtlas atlasNamed:@"animation"];
+    NSMutableArray* tempAnimations = [NSMutableArray new];
+    for(int i = 1; i < atlas.textureNames.count; i++) {
+        SKTexture* texture = [atlas textureNamed:[NSString stringWithFormat:@"kingBach_0%d",i]];
+        [tempAnimations addObject:texture];
+    }
+    _runAnimation = [NSArray arrayWithArray:tempAnimations];
+    [self addChild:_bach];
 }
 
 //---------------------------------------------------------------
@@ -28,7 +42,7 @@
 //---------------------------------------------------------------
 - (BOOL) checkOutFromScreen:(SKNode*) sprite {
     CGFloat offset = sprite.position.x;
-    if(offset < -sprite.frame.size.width/2 + 1) {
+    if(offset < -sprite.frame.size.width/2 + 2) {
         return YES;
     }
     return NO;
@@ -36,6 +50,7 @@
 
 //---------------------------------------------------------------
 -(void)update:(CFTimeInterval)currentTime {
+    [self updatePlayer];
     //Проверяем вышла ли земля за границы экрана а затем перекидываем е> вначало очереди на показ
     if([self checkOutFromScreen:_ground_01] == YES) {
         _ground_01.position = CGPointMake(_ground_02.position.x + _ground_02.frame.size.width, _ground_01.position.y);
@@ -87,6 +102,11 @@
     
 }
 
+
+- (void) updatePlayer {
+    SKAction* actionPlayRunAnimation = [SKAction animateWithTextures:_runAnimation timePerFrame:0.1];
+    [_bach runAction:actionPlayRunAnimation];
+}
 
 //---------------------------------------------------------------
 //Описание:

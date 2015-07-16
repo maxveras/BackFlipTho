@@ -37,4 +37,8 @@
 
 @property (nonatomic, assign) CGFloat groundHeight;
 
+//Bach
+@property (nonatomic, strong) SKNode* bach;
+@property (nonatomic, strong) NSArray* runAnimation;
+
 @end
