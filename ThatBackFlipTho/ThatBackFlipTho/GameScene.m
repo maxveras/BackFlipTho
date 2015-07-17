@@ -20,9 +20,9 @@
     _groundHeight = _ground_01.frame.size.height;
     
     //_bach = [SKSpriteNode spriteNodeWithImageNamed:@"kingBach_01"];
-    //[_bach setPosition:CGPointMake(50, _groundHeight + 100)];
     _bach = [self childNodeWithName:@"bach"];
-    //[_bach setScale:0.5f];
+    [_bach setScale:0.35f];
+    [_bach setPosition:CGPointMake(500, _groundHeight )];
     
     SKTextureAtlas* atlas = [SKTextureAtlas atlasNamed:@"animation"];
     NSMutableArray* tempAnimations = [NSMutableArray new];
@@ -31,12 +31,13 @@
         [tempAnimations addObject:texture];
     }
     _runAnimation = [NSArray arrayWithArray:tempAnimations];
-    [self addChild:_bach];
+    //[self addChild:_bach];
 }
 
 //---------------------------------------------------------------
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-
+    SKAction* jump = [SKAction reachTo:CGPointMake(_bach.position.x, _bach.position.y + 100) rootNode:self.view velocity:10];
+    [_bach runAction:jump];
 }
 
 //---------------------------------------------------------------
