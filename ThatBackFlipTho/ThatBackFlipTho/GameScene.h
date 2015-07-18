@@ -8,7 +8,17 @@
 
 #import <SpriteKit/SpriteKit.h>
 
-@interface GameScene : SKScene
+//Перечисление типов объектов, с которыми можем столкнуться
+//Другими словами колайдер для каждого типа объекта
+typedef enum {
+    ColliderTypeActor,
+    ColliderTypeGround,
+    COlliderTypeBorder
+} ColliderType;
+
+
+@interface GameScene : SKScene <SKPhysicsContactDelegate>
+
 
 //Группа элементов земли
 @property (nonatomic, strong) SKNode* ground_01;

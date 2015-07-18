@@ -7,8 +7,15 @@
 //
 
 #import "GameScene.h"
+
+static NSString* kActionRunAnimation = @"RunAnimation";
+static NSString* kActionRunAnimationLoop = @"RunAnimationLoop";
+
+
 @interface GameScene()
 @property (nonatomic, assign) BOOL onAir;
+@property (nonatomic, assign) CGFloat impuls;
+@property (nonatomic, strong) SKAction* runAction;
 @end
 
 @implementation GameScene
@@ -18,6 +25,7 @@ static CGFloat defaultGameSpeed = 40;
 //---------------------------------------------------------------
 -(void)didMoveToView:(SKView *)view {
     self.onAir = NO;
+    self.physicsWorld.contactDelegate = self;
     
     [self prepareGroundToMove];
     [self prepareCityToMove];
@@ -30,17 +38,38 @@ static CGFloat defaultGameSpeed = 40;
 
 //---------------------------------------------------------------
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-    //SKAction* jump = [SKAction reachTo:CGPointMake(_bach.position.x, _bach.position.y + 100) rootNode:self.view velocity:10];
-    //[_bach runAction:jump];
-    [self.bach.physicsBody applyImpulse:CGVectorMake(10, 35)];
-    //[_bach runAction:jump];
+    if(self.onAir == NO) {
+        self.onAir = YES;
+        self.impuls = 10;
+        [self.bach removeActionForKey:kActionRunAnimationLoop];
+        //TODO: Stop run animation
+    }
+}
+
+//---------------------------------------------------------------
+- (void)didBeginContact:(SKPhysicsContact *)contact {
+    if(self.onAir == YES) {
+        self.onAir = NO;
+        self.impuls = 0;
+        if(self.runAction)
+            [self.bach runAction:self.runAction withKey:kActionRunAnimationLoop];
+    }
 }
 
 //---------------------------------------------------------------
 - (void) initActor {
     _bach = [self childNodeWithName:@"bach"];
+   // _bach.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:[[SKTexture textureWithImageNamed:@"kingBach1"] size]];
+    if(!_bach.physicsBody)
+        NSLog(@"Bach phys body do not inited");
+    
+    self.bach.physicsBody.contactTestBitMask = ColliderTypeGround | COlliderTypeBorder;
+    self.bach.physicsBody.collisionBitMask = ColliderTypeGround | COlliderTypeBorder;
+    self.bach.physicsBody.categoryBitMask = ColliderTypeActor;
+    
+    
     [_bach setScale:0.35f];
-    [_bach setPosition:CGPointMake(400, _groundHeight -10)];
+    [_bach setPosition:CGPointMake(400, _groundHeight +100)];
     
     SKTextureAtlas* atlas = [SKTextureAtlas atlasNamed:@"RunBach"];
     NSMutableArray* tempAnimations = [NSMutableArray new];
@@ -51,8 +80,8 @@ static CGFloat defaultGameSpeed = 40;
     _runAnimation = [NSArray arrayWithArray:tempAnimations];
     
     SKAction* playBachAnim = [SKAction animateWithTextures:tempAnimations timePerFrame:0.15];
-    SKAction* repeatRunAnim = [SKAction repeatActionForever:playBachAnim];
-    [_bach runAction:repeatRunAnim withKey:@"bachAnim"];
+    self.runAction = [SKAction repeatActionForever:playBachAnim];
+    [_bach runAction:self.runAction withKey:kActionRunAnimationLoop];
 }
 
 //---------------------------------------------------------------
@@ -66,7 +95,7 @@ static CGFloat defaultGameSpeed = 40;
 
 //---------------------------------------------------------------
 -(void)update:(CFTimeInterval)currentTime {
-    [self updatePlayer];
+    [self updatePlayer:currentTime];
     //Проверяем вышла ли земля за границы экрана а затем перекидываем е> вначало очереди на показ
     if([self checkOutFromScreen:_ground_01] == YES) {
         _ground_01.position = CGPointMake(_ground_02.position.x + _ground_02.frame.size.width, _ground_01.position.y);
@@ -118,8 +147,15 @@ static CGFloat defaultGameSpeed = 40;
     
 }
 
-
-- (void) updatePlayer {}
+//---------------------------------------------------------------
+- (void) updatePlayer:(CFTimeInterval)currTime {
+    if(self.onAir == YES) {
+        CGFloat currentY = self.bach.position.y;
+        CGPoint newPositionAddedByImpuls = CGPointMake(self.bach.position.x, currentY + self.impuls);
+        self.bach.position = newPositionAddedByImpuls;
+        self.impuls -= 0.098;//self.physicsWorld.gravity.dx;
+    }
+}
 
 //---------------------------------------------------------------
 //Описание:
