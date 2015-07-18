@@ -7,11 +7,17 @@
 //
 
 #import "GameScene.h"
+@interface GameScene()
+@property (nonatomic, assign) BOOL onAir;
+@end
 
 @implementation GameScene
 
+static CGFloat defaultGameSpeed = 40;
+
 //---------------------------------------------------------------
 -(void)didMoveToView:(SKView *)view {
+    self.onAir = NO;
     
     [self prepareGroundToMove];
     [self prepareCityToMove];
@@ -19,25 +25,34 @@
     
     _groundHeight = _ground_01.frame.size.height;
     
-    //_bach = [SKSpriteNode spriteNodeWithImageNamed:@"kingBach_01"];
-    _bach = [self childNodeWithName:@"bach"];
-    [_bach setScale:0.35f];
-    [_bach setPosition:CGPointMake(500, _groundHeight )];
-    
-    SKTextureAtlas* atlas = [SKTextureAtlas atlasNamed:@"animation"];
-    NSMutableArray* tempAnimations = [NSMutableArray new];
-    for(int i = 1; i < atlas.textureNames.count; i++) {
-        SKTexture* texture = [atlas textureNamed:[NSString stringWithFormat:@"kingBach_0%d",i]];
-        [tempAnimations addObject:texture];
-    }
-    _runAnimation = [NSArray arrayWithArray:tempAnimations];
-    //[self addChild:_bach];
+    [self initActor];
 }
 
 //---------------------------------------------------------------
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-    SKAction* jump = [SKAction reachTo:CGPointMake(_bach.position.x, _bach.position.y + 100) rootNode:self.view velocity:10];
-    [_bach runAction:jump];
+    //SKAction* jump = [SKAction reachTo:CGPointMake(_bach.position.x, _bach.position.y + 100) rootNode:self.view velocity:10];
+    //[_bach runAction:jump];
+    [self.bach.physicsBody applyImpulse:CGVectorMake(10, 35)];
+    //[_bach runAction:jump];
+}
+
+//---------------------------------------------------------------
+- (void) initActor {
+    _bach = [self childNodeWithName:@"bach"];
+    [_bach setScale:0.35f];
+    [_bach setPosition:CGPointMake(400, _groundHeight -10)];
+    
+    SKTextureAtlas* atlas = [SKTextureAtlas atlasNamed:@"RunBach"];
+    NSMutableArray* tempAnimations = [NSMutableArray new];
+    for(int i = 1; i <= atlas.textureNames.count; i++) {
+        SKTexture* texture = [atlas textureNamed:[NSString stringWithFormat:@"kingBach%d",i]];
+        [tempAnimations addObject:texture];
+    }
+    _runAnimation = [NSArray arrayWithArray:tempAnimations];
+    
+    SKAction* playBachAnim = [SKAction animateWithTextures:tempAnimations timePerFrame:0.15];
+    SKAction* repeatRunAnim = [SKAction repeatActionForever:playBachAnim];
+    [_bach runAction:repeatRunAnim withKey:@"bachAnim"];
 }
 
 //---------------------------------------------------------------
@@ -104,10 +119,7 @@
 }
 
 
-- (void) updatePlayer {
-    SKAction* actionPlayRunAnimation = [SKAction animateWithTextures:_runAnimation timePerFrame:0.1];
-    [_bach runAction:actionPlayRunAnimation];
-}
+- (void) updatePlayer {}
 
 //---------------------------------------------------------------
 //Описание:
@@ -115,8 +127,8 @@
 - (void) prepareGroundToMove {
     self.ground_01 = [self childNodeWithName:@"ground_01"];
     self.ground_02 = [self childNodeWithName:@"ground_02"];
-    SKAction* moveGround01Sprite = [SKAction moveByX:-_ground_01.frame.size.width * 50 y:0 duration:0.1 * _ground_01.frame.size.width * 2];
-    SKAction* moveGround02Sprite = [SKAction moveByX:-_ground_02.frame.size.width * 50 y:0 duration:0.1 * _ground_02.frame.size.width * 2];
+    SKAction* moveGround01Sprite = [SKAction moveByX:-_ground_01.frame.size.width * defaultGameSpeed y:0 duration:0.1 * _ground_01.frame.size.width * 2];
+    SKAction* moveGround02Sprite = [SKAction moveByX:-_ground_02.frame.size.width * defaultGameSpeed y:0 duration:0.1 * _ground_02.frame.size.width * 2];
     
     [_ground_01 runAction:moveGround01Sprite];
     [_ground_02 runAction:moveGround02Sprite];
@@ -141,8 +153,8 @@
     self.cityFarBackgroundSecond_02 = [SKSpriteNode spriteNodeWithImageNamed:@"city_bacground_second_layer"];
     
     //Create a sprite actions
-    SKAction* moveCityFirst_01 = [SKAction moveByX:-self.cityBackgroundFirst_01.frame.size.width * 50 y:0 duration:0.1 * self.cityBackgroundFirst_01.frame.size.width * 2];
-    SKAction* moveCityFirst_02 = [SKAction moveByX:-self.cityBackgroundFirst_02.frame.size.width * 50 y:0 duration:0.1 * self.cityBackgroundFirst_02.frame.size.width * 2];
+    SKAction* moveCityFirst_01 = [SKAction moveByX:-self.cityBackgroundFirst_01.frame.size.width * defaultGameSpeed y:0 duration:0.1 * self.cityBackgroundFirst_01.frame.size.width * 2];
+    SKAction* moveCityFirst_02 = [SKAction moveByX:-self.cityBackgroundFirst_02.frame.size.width * defaultGameSpeed y:0 duration:0.1 * self.cityBackgroundFirst_02.frame.size.width * 2];
     
     SKAction* moveCitySecond_01 = [SKAction moveByX:-self.cityBackgroundSecond_01.frame.size.width * 35 y:0 duration:0.1 * self.cityBackgroundSecond_01.frame.size.width * 2];
     SKAction* moveCitySecond_02 = [SKAction moveByX:-self.cityBackgroundSecond_02.frame.size.width * 35 y:0 duration:0.1 * self.cityBackgroundSecond_02.frame.size.width * 2];

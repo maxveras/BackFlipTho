@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		494DB9C41B5A875800D91F2A /* RunBach.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 494DB9C31B5A875800D91F2A /* RunBach.atlas */; };
 		84BE59061B53129C00B6B340 /* Common.m in Sources */ = {isa = PBXBuildFile; fileRef = 84BE59051B53129C00B6B340 /* Common.m */; };
-		84CEB0C71B5852C60078EBA4 /* kingBach_01.png in Resources */ = {isa = PBXBuildFile; fileRef = 84CEB0C61B5852C60078EBA4 /* kingBach_01.png */; };
 		8973B90E1B469EB000298218 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8973B90D1B469EB000298218 /* main.m */; };
 		8973B9111B469EB000298218 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8973B9101B469EB000298218 /* AppDelegate.m */; };
 		8973B9141B469EB000298218 /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 8973B9131B469EB000298218 /* GameScene.m */; };
@@ -17,8 +17,6 @@
 		8973B91C1B469EB000298218 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8973B91A1B469EB000298218 /* Main.storyboard */; };
 		8973B91E1B469EB000298218 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8973B91D1B469EB000298218 /* Images.xcassets */; };
 		8973B9211B469EB000298218 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8973B91F1B469EB000298218 /* LaunchScreen.xib */; };
-		8973B92D1B469EB000298218 /* ThatBackFlipThoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8973B92C1B469EB000298218 /* ThatBackFlipThoTests.m */; };
-		89A60FCD1B513E98006CD6C7 /* animation.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 89A60FCC1B513E98006CD6C7 /* animation.atlas */; };
 		89A60FD51B513F65006CD6C7 /* ground.png in Resources */ = {isa = PBXBuildFile; fileRef = 89A60FD41B513F65006CD6C7 /* ground.png */; };
 		89DAABCD1B51646F00D6FBB3 /* city_first_layer.png in Resources */ = {isa = PBXBuildFile; fileRef = 89A60FD01B513EDF006CD6C7 /* city_first_layer.png */; };
 		89DAABCE1B51647E00D6FBB3 /* city_bacground_second_layer.png in Resources */ = {isa = PBXBuildFile; fileRef = 89A60FCF1B513EDF006CD6C7 /* city_bacground_second_layer.png */; };
@@ -38,9 +36,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		494DB9C31B5A875800D91F2A /* RunBach.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = RunBach.atlas; sourceTree = "<group>"; };
 		84BE59041B53129C00B6B340 /* Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Common.h; sourceTree = "<group>"; };
 		84BE59051B53129C00B6B340 /* Common.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Common.m; sourceTree = "<group>"; };
-		84CEB0C61B5852C60078EBA4 /* kingBach_01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = kingBach_01.png; path = animation.atlas/kingBach_01.png; sourceTree = "<group>"; };
 		8973B9081B469EB000298218 /* ThatBackFlipTho.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ThatBackFlipTho.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8973B90C1B469EB000298218 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8973B90D1B469EB000298218 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -55,9 +53,6 @@
 		8973B91D1B469EB000298218 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		8973B9201B469EB000298218 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		8973B9261B469EB000298218 /* ThatBackFlipThoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ThatBackFlipThoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		8973B92B1B469EB000298218 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8973B92C1B469EB000298218 /* ThatBackFlipThoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ThatBackFlipThoTests.m; sourceTree = "<group>"; };
-		89A60FCC1B513E98006CD6C7 /* animation.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = animation.atlas; sourceTree = "<group>"; };
 		89A60FCE1B513EDF006CD6C7 /* city_bacground_first_layer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = city_bacground_first_layer.png; sourceTree = "<group>"; };
 		89A60FCF1B513EDF006CD6C7 /* city_bacground_second_layer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = city_bacground_second_layer.png; sourceTree = "<group>"; };
 		89A60FD01B513EDF006CD6C7 /* city_first_layer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = city_first_layer.png; sourceTree = "<group>"; };
@@ -88,7 +83,6 @@
 			isa = PBXGroup;
 			children = (
 				8973B90A1B469EB000298218 /* ThatBackFlipTho */,
-				8973B9291B469EB000298218 /* ThatBackFlipThoTests */,
 				8973B9091B469EB000298218 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -105,6 +99,7 @@
 		8973B90A1B469EB000298218 /* ThatBackFlipTho */ = {
 			isa = PBXGroup;
 			children = (
+				494DB9C31B5A875800D91F2A /* RunBach.atlas */,
 				8973B90F1B469EB000298218 /* AppDelegate.h */,
 				8973B9101B469EB000298218 /* AppDelegate.m */,
 				8973B9121B469EB000298218 /* GameScene.h */,
@@ -132,23 +127,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		8973B9291B469EB000298218 /* ThatBackFlipThoTests */ = {
-			isa = PBXGroup;
-			children = (
-				8973B92C1B469EB000298218 /* ThatBackFlipThoTests.m */,
-				8973B92A1B469EB000298218 /* Supporting Files */,
-			);
-			path = ThatBackFlipThoTests;
-			sourceTree = "<group>";
-		};
-		8973B92A1B469EB000298218 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				8973B92B1B469EB000298218 /* Info.plist */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
 		8973B9361B46A40700298218 /* Images */ = {
 			isa = PBXGroup;
 			children = (
@@ -158,8 +136,6 @@
 				89A60FD11B513EDF006CD6C7 /* city_second_layer.png */,
 				89A60FD21B513EDF006CD6C7 /* city_tred_layer.png */,
 				89A60FD41B513F65006CD6C7 /* ground.png */,
-				84CEB0C61B5852C60078EBA4 /* kingBach_01.png */,
-				89A60FCC1B513E98006CD6C7 /* animation.atlas */,
 			);
 			name = Images;
 			sourceTree = "<group>";
@@ -246,11 +222,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				89A60FD51B513F65006CD6C7 /* ground.png in Resources */,
-				84CEB0C71B5852C60078EBA4 /* kingBach_01.png in Resources */,
+				494DB9C41B5A875800D91F2A /* RunBach.atlas in Resources */,
 				89DAABCF1B51648100D6FBB3 /* city_bacground_first_layer.png in Resources */,
 				8973B9211B469EB000298218 /* LaunchScreen.xib in Resources */,
 				89DAABCD1B51646F00D6FBB3 /* city_first_layer.png in Resources */,
-				89A60FCD1B513E98006CD6C7 /* animation.atlas in Resources */,
 				8973B91E1B469EB000298218 /* Images.xcassets in Resources */,
 				89DAABD11B51648C00D6FBB3 /* city_tred_layer.png in Resources */,
 				8973B9161B469EB000298218 /* GameScene.sks in Resources */,
@@ -286,7 +261,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8973B92D1B469EB000298218 /* ThatBackFlipThoTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -320,7 +294,7 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		8973B92E1B469EB000298218 /* Debug */ = {
+		494DB9C61B5A8E6300D91F2A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -339,25 +313,45 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
-				MTL_ENABLE_DEBUG_INFO = YES;
-				ONLY_ACTIVE_ARCH = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Debug;
+		};
+		494DB9C71B5A8E6300D91F2A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = ThatBackFlipTho/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		494DB9C81B5A8E6300D91F2A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = ThatBackFlipThoTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ThatBackFlipTho.app/ThatBackFlipTho";
 			};
 			name = Debug;
 		};
@@ -389,24 +383,12 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
-		};
-		8973B9311B469EB000298218 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				INFOPLIST_FILE = ThatBackFlipTho/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Debug;
 		};
 		8973B9321B469EB000298218 /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -420,29 +402,9 @@
 			};
 			name = Release;
 		};
-		8973B9341B469EB000298218 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = ThatBackFlipThoTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ThatBackFlipTho.app/ThatBackFlipTho";
-			};
-			name = Debug;
-		};
 		8973B9351B469EB000298218 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -460,29 +422,29 @@
 		8973B9031B469EB000298218 /* Build configuration list for PBXProject "ThatBackFlipTho" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				8973B92E1B469EB000298218 /* Debug */,
 				8973B92F1B469EB000298218 /* Release */,
+				494DB9C61B5A8E6300D91F2A /* Debug */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		8973B9301B469EB000298218 /* Build configuration list for PBXNativeTarget "ThatBackFlipTho" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				8973B9311B469EB000298218 /* Debug */,
 				8973B9321B469EB000298218 /* Release */,
+				494DB9C71B5A8E6300D91F2A /* Debug */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		8973B9331B469EB000298218 /* Build configuration list for PBXNativeTarget "ThatBackFlipThoTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				8973B9341B469EB000298218 /* Debug */,
 				8973B9351B469EB000298218 /* Release */,
+				494DB9C81B5A8E6300D91F2A /* Debug */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
 	};
