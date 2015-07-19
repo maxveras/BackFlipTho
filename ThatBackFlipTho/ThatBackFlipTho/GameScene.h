@@ -25,12 +25,12 @@ typedef enum {
 @property (nonatomic, strong) SKNode* ground_02;
 
 //Темносиний слой фона города
-@property (nonatomic, strong) SKNode* cityFarBackgroundFirst_01;
-@property (nonatomic, strong) SKNode* cityFarBackgroundFirst_02;
+@property (nonatomic, strong) SKSpriteNode* cityFarBackgroundFirst_01;
+@property (nonatomic, strong) SKSpriteNode* cityFarBackgroundFirst_02;
 
 //Светлосиний слой фона города
-@property (nonatomic, strong) SKNode* cityFarBackgroundSecond_01;
-@property (nonatomic, strong) SKNode* cityFarBackgroundSecond_02;
+@property (nonatomic, strong) SKSpriteNode* cityFarBackgroundSecond_01;
+@property (nonatomic, strong) SKSpriteNode* cityFarBackgroundSecond_02;
 
 //Дальний слой города
 @property (nonatomic, strong) SKNode* cityBackgroundThird_01;

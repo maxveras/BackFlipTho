@@ -10,23 +10,25 @@
 
 static NSString* kActionRunAnimation = @"RunAnimation";
 static NSString* kActionRunAnimationLoop = @"RunAnimationLoop";
+static CGFloat defaultGameSpeed = 40;
 
-
+//==============================================================
 @interface GameScene()
 @property (nonatomic, assign) BOOL onAir;
 @property (nonatomic, assign) CGFloat impuls;
 @property (nonatomic, strong) SKAction* runAction;
 @end
 
+
+//==============================================================
 @implementation GameScene
 
-static CGFloat defaultGameSpeed = 40;
-
-//---------------------------------------------------------------
 -(void)didMoveToView:(SKView *)view {
+    self.backgroundColor = [UIColor colorWithRed:(CGFloat)204/255 green:(CGFloat)240/255 blue:(CGFloat)253/255 alpha:1];
     self.onAir = NO;
     self.physicsWorld.contactDelegate = self;
     
+     _groundHeight = _ground_01.frame.size.height;
     [self prepareGroundToMove];
     [self prepareCityToMove];
     [self prepareCityPositionAndScale];
@@ -42,13 +44,14 @@ static CGFloat defaultGameSpeed = 40;
         self.onAir = YES;
         self.impuls = 10;
         [self.bach removeActionForKey:kActionRunAnimationLoop];
-        //TODO: Stop run animation
+        SKAction* holdFrame = [SKAction animateWithTextures:[NSArray arrayWithObject:[SKTexture textureWithImageNamed:@"kingBach1"]] timePerFrame:0];
+        [self.bach runAction:holdFrame];
     }
 }
 
 //---------------------------------------------------------------
 - (void)didBeginContact:(SKPhysicsContact *)contact {
-    if(self.onAir == YES) {
+    if(self.onAir == YES && contact.bodyB.categoryBitMask == ColliderTypeGround) {
         self.onAir = NO;
         self.impuls = 0;
         if(self.runAction)
@@ -69,7 +72,7 @@ static CGFloat defaultGameSpeed = 40;
     
     
     [_bach setScale:0.35f];
-    [_bach setPosition:CGPointMake(400, _groundHeight +100)];
+    //[_bach setPosition:CGPointMake(400, _groundHeight +100)];
     
     SKTextureAtlas* atlas = [SKTextureAtlas atlasNamed:@"RunBach"];
     NSMutableArray* tempAnimations = [NSMutableArray new];
@@ -79,7 +82,7 @@ static CGFloat defaultGameSpeed = 40;
     }
     _runAnimation = [NSArray arrayWithArray:tempAnimations];
     
-    SKAction* playBachAnim = [SKAction animateWithTextures:tempAnimations timePerFrame:0.15];
+    SKAction* playBachAnim = [SKAction animateWithTextures:tempAnimations timePerFrame:0.13];
     self.runAction = [SKAction repeatActionForever:playBachAnim];
     [_bach runAction:self.runAction withKey:kActionRunAnimationLoop];
 }
@@ -87,7 +90,7 @@ static CGFloat defaultGameSpeed = 40;
 //---------------------------------------------------------------
 - (BOOL) checkOutFromScreen:(SKNode*) sprite {
     CGFloat offset = sprite.position.x;
-    if(offset < -sprite.frame.size.width/2 + 2) {
+    if(offset < -sprite.frame.size.width/2 + 4) {
         return YES;
     }
     return NO;
@@ -224,6 +227,24 @@ static CGFloat defaultGameSpeed = 40;
 
 //----------------------------------------------------
 -(void) prepareCityPositionAndScale {
+    
+    //Add sprites as child to scene
+    [self addChild:_cityFarBackgroundSecond_01];
+    [self addChild:_cityFarBackgroundSecond_02];
+    
+    [self addChild:_cityFarBackgroundFirst_01];
+    [self addChild:_cityFarBackgroundFirst_02];
+    
+    [self addChild:_cityBackgroundThird_01];
+    [self addChild:_cityBackgroundThird_02];
+    [self addChild:_cityBackgroundSecond_01];
+    [self addChild:_cityBackgroundSecond_02];
+
+
+
+    [self addChild:_cityBackgroundFirst_01];
+    [self addChild:_cityBackgroundFirst_02];
+    
     //Assign initial position
     [_cityBackgroundFirst_01 setScale:0.5];
     [_cityBackgroundFirst_02 setScale:0.5];
@@ -233,12 +254,7 @@ static CGFloat defaultGameSpeed = 40;
     
     [_cityBackgroundThird_01 setScale:0.5];
     [_cityBackgroundThird_02 setScale:0.5];
-    
-    [_cityFarBackgroundFirst_01 setScale:0.5];
-    [_cityFarBackgroundFirst_02 setScale:0.5];
-    
-    [_cityFarBackgroundSecond_01 setScale:0.5];
-    [_cityFarBackgroundSecond_02 setScale:0.5];
+
     
     
     [_cityBackgroundFirst_01 setPosition:CGPointMake(_cityBackgroundFirst_01.frame.size.width / 2, _groundHeight + _cityBackgroundFirst_01.frame.size.height * 1.65)];
@@ -250,29 +266,14 @@ static CGFloat defaultGameSpeed = 40;
     
     [_cityBackgroundThird_01 setPosition:CGPointMake(_cityBackgroundThird_01.frame.size.width / 2, _groundHeight + _cityBackgroundThird_01.frame.size.height )];
     [_cityBackgroundThird_02 setPosition:CGPointMake(_cityBackgroundThird_02.frame.origin.x + _cityBackgroundThird_02.frame.size.width, _groundHeight +  _cityBackgroundThird_02.frame.size.height)];
+//
+//    //Far1
+    [_cityFarBackgroundFirst_01 setPosition:CGPointMake(_cityFarBackgroundFirst_01.size.width / 2, _groundHeight * 2 + _cityFarBackgroundFirst_01.size.height)];
+    [_cityFarBackgroundFirst_02 setPosition:CGPointMake(_cityFarBackgroundFirst_02.position.x + _cityFarBackgroundFirst_02.size.width, _groundHeight * 2 +  _cityFarBackgroundFirst_02.size.height)];
     
-    [_cityFarBackgroundFirst_01 setPosition:CGPointMake(_cityFarBackgroundFirst_01.frame.size.width / 2, _groundHeight + _cityFarBackgroundFirst_01.frame.size.height * 1.5)];
-    [_cityFarBackgroundFirst_02 setPosition:CGPointMake(_cityFarBackgroundFirst_02.frame.origin.x + _cityFarBackgroundFirst_02.frame.size.width, _groundHeight +  _cityFarBackgroundFirst_02.frame.size.height * 1.5)];
-    
-    [_cityFarBackgroundSecond_01 setPosition:CGPointMake(_cityFarBackgroundSecond_01.frame.size.width / 2, _groundHeight + _cityFarBackgroundSecond_01.frame.size.height * 1.1)];
-    [_cityFarBackgroundSecond_02 setPosition:CGPointMake(_cityFarBackgroundSecond_02.frame.origin.x + _cityFarBackgroundSecond_02.frame.size.width, _groundHeight +  _cityFarBackgroundSecond_02.frame.size.height * 1.1)];
-    
-    //Add sprites as child to scene
-    [self addChild:_cityFarBackgroundSecond_01];
-    [self addChild:_cityFarBackgroundSecond_02];
-    
-    [self addChild:_cityFarBackgroundFirst_01];
-    [self addChild:_cityFarBackgroundFirst_02];
-
-    [self addChild:_cityBackgroundThird_01];
-    [self addChild:_cityBackgroundThird_02];
-    [self addChild:_cityBackgroundSecond_01];
-    [self addChild:_cityBackgroundSecond_02];
-
-
-    
-    [self addChild:_cityBackgroundFirst_01];
-    [self addChild:_cityBackgroundFirst_02];
+    //Far2
+    [_cityFarBackgroundSecond_01 setPosition:CGPointMake(_cityFarBackgroundSecond_01.size.width / 2, _groundHeight + _cityFarBackgroundSecond_01.size.height / 2 + 100)];
+    [_cityFarBackgroundSecond_02 setPosition:CGPointMake(_cityFarBackgroundSecond_01.position.x + _cityFarBackgroundSecond_02.size.width, _groundHeight +  _cityFarBackgroundSecond_02.size.height / 2 +100)];
 }
 
 @end
