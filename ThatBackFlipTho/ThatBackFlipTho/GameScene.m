@@ -10,7 +10,8 @@
 
 static NSString* kActionRunAnimation = @"RunAnimation";
 static NSString* kActionRunAnimationLoop = @"RunAnimationLoop";
-static CGFloat defaultGameSpeed = 40;
+static CGFloat defaultGameSpeed = 60;
+static CGFloat jumpHeight = 13.5f;
 
 //==============================================================
 @interface GameScene()
@@ -19,7 +20,7 @@ static CGFloat defaultGameSpeed = 40;
 @property (nonatomic, strong) SKAction* runAction;
 @end
 
-
+#pragma mark - Game Scene Initialize
 //==============================================================
 @implementation GameScene
 
@@ -42,10 +43,11 @@ static CGFloat defaultGameSpeed = 40;
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     if(self.onAir == NO) {
         self.onAir = YES;
-        self.impuls = 10;
+        self.impuls = jumpHeight;
         [self.bach removeActionForKey:kActionRunAnimationLoop];
         SKAction* holdFrame = [SKAction animateWithTextures:[NSArray arrayWithObject:[SKTexture textureWithImageNamed:@"kingBach1"]] timePerFrame:0];
         [self.bach runAction:holdFrame];
+        [self performSelector:@selector(backflipTho) withObject:nil afterDelay:0.08];
     }
 }
 
@@ -56,6 +58,7 @@ static CGFloat defaultGameSpeed = 40;
         self.impuls = 0;
         if(self.runAction)
             [self.bach runAction:self.runAction withKey:kActionRunAnimationLoop];
+        self.bach.physicsBody.restitution = 0;
     }
 }
 
@@ -69,6 +72,9 @@ static CGFloat defaultGameSpeed = 40;
     self.bach.physicsBody.contactTestBitMask = ColliderTypeGround | COlliderTypeBorder;
     self.bach.physicsBody.collisionBitMask = ColliderTypeGround | COlliderTypeBorder;
     self.bach.physicsBody.categoryBitMask = ColliderTypeActor;
+    self.bach.physicsBody.restitution = 0;
+    self.ground_01.physicsBody.restitution = 0;
+    self.ground_02.physicsBody.restitution = 0;
     
     
     [_bach setScale:0.35f];
@@ -90,7 +96,7 @@ static CGFloat defaultGameSpeed = 40;
 //---------------------------------------------------------------
 - (BOOL) checkOutFromScreen:(SKNode*) sprite {
     CGFloat offset = sprite.position.x;
-    if(offset < -sprite.frame.size.width/2 + 4) {
+    if(offset < -sprite.frame.size.width/2 + 2) {
         return YES;
     }
     return NO;
@@ -169,8 +175,8 @@ static CGFloat defaultGameSpeed = 40;
     SKAction* moveGround01Sprite = [SKAction moveByX:-_ground_01.frame.size.width * defaultGameSpeed y:0 duration:0.1 * _ground_01.frame.size.width * 2];
     SKAction* moveGround02Sprite = [SKAction moveByX:-_ground_02.frame.size.width * defaultGameSpeed y:0 duration:0.1 * _ground_02.frame.size.width * 2];
     
-    [_ground_01 runAction:moveGround01Sprite];
-    [_ground_02 runAction:moveGround02Sprite];
+    [_ground_01 runAction:[SKAction repeatActionForever:moveGround01Sprite]];
+    [_ground_02 runAction:[SKAction repeatActionForever:moveGround02Sprite]];
 }
 
 //---------------------------------------------------------------
@@ -274,6 +280,16 @@ static CGFloat defaultGameSpeed = 40;
     //Far2
     [_cityFarBackgroundSecond_01 setPosition:CGPointMake(_cityFarBackgroundSecond_01.size.width / 2, _groundHeight + _cityFarBackgroundSecond_01.size.height / 2 + 100)];
     [_cityFarBackgroundSecond_02 setPosition:CGPointMake(_cityFarBackgroundSecond_01.position.x + _cityFarBackgroundSecond_02.size.width, _groundHeight +  _cityFarBackgroundSecond_02.size.height / 2 +100)];
+}
+
+
+- (void)backflipTho {
+    SKAction* flip = [SKAction rotateToAngle:M_PI * 720 / 360 duration:0.65];
+    SKAction* backflipOffset = [SKAction moveByX:50 y:0 duration:0.3];
+    SKAction* backflipReverseOffset = [SKAction moveByX:-50 y:0 duration:0.45];
+    
+    [self.bach runAction:[SKAction sequence:@[backflipOffset, backflipReverseOffset]]];
+    [self.bach runAction:flip];
 }
 
 @end
