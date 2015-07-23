@@ -7,6 +7,7 @@
 //
 
 #import "GameScene.h"
+#import "Common.h"
 
 static NSString* kActionRunAnimation = @"RunAnimation";
 static NSString* kActionRunAnimationLoop = @"RunAnimationLoop";
@@ -25,17 +26,24 @@ static CGFloat jumpHeight = 13.5f;
 @implementation GameScene
 
 -(void)didMoveToView:(SKView *)view {
+    self.obstacleManager = [ObstacleManager getInstance];
+    [self.obstacleManager setRootScene:self];
+    
     self.backgroundColor = [UIColor colorWithRed:(CGFloat)204/255 green:(CGFloat)240/255 blue:(CGFloat)253/255 alpha:1];
     self.onAir = NO;
     self.physicsWorld.contactDelegate = self;
     
      _groundHeight = _ground_01.frame.size.height;
+    
+    
+    
     [self prepareGroundToMove];
     [self prepareCityToMove];
     [self prepareCityPositionAndScale];
     
     _groundHeight = _ground_01.frame.size.height;
-    
+    groundHeight = _groundHeight;
+    NSLog(@"%lf", groundHeight);
     [self initActor];
 }
 
@@ -69,8 +77,8 @@ static CGFloat jumpHeight = 13.5f;
     if(!_bach.physicsBody)
         NSLog(@"Bach phys body do not inited");
     
-    self.bach.physicsBody.contactTestBitMask = ColliderTypeGround | COlliderTypeBorder;
-    self.bach.physicsBody.collisionBitMask = ColliderTypeGround | COlliderTypeBorder;
+    self.bach.physicsBody.contactTestBitMask = ColliderTypeGround | ColliderTypeObstacle;
+    self.bach.physicsBody.collisionBitMask = ColliderTypeGround | ColliderTypeObstacle;
     self.bach.physicsBody.categoryBitMask = ColliderTypeActor;
     self.bach.physicsBody.restitution = 0;
     self.ground_01.physicsBody.restitution = 0;
@@ -105,6 +113,11 @@ static CGFloat jumpHeight = 13.5f;
 //---------------------------------------------------------------
 -(void)update:(CFTimeInterval)currentTime {
     [self updatePlayer:currentTime];
+    if(self.obstacleManager != NULL)
+        [self.obstacleManager update:currentTime];
+    else
+        NSLog(@"Obstacle is null");
+    
     //Проверяем вышла ли земля за границы экрана а затем перекидываем е> вначало очереди на показ
     if([self checkOutFromScreen:_ground_01] == YES) {
         _ground_01.position = CGPointMake(_ground_02.position.x + _ground_02.frame.size.width, _ground_01.position.y);
@@ -290,6 +303,12 @@ static CGFloat jumpHeight = 13.5f;
     
     [self.bach runAction:[SKAction sequence:@[backflipOffset, backflipReverseOffset]]];
     [self.bach runAction:flip];
+}
+
+
+
+- (void)spawnObstacle:(SKSpriteNode*) node {
+    [self addChild:node];
 }
 
 @end

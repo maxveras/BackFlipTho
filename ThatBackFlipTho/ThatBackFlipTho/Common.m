@@ -10,4 +10,13 @@
 
 @implementation Common
 
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        baseLevelSpeed = 40.f;
+    }
+    return self;
+}
+
 @end

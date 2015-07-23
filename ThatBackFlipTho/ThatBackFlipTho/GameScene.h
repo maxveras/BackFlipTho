@@ -7,18 +7,12 @@
 //
 
 #import <SpriteKit/SpriteKit.h>
-
-//Перечисление типов объектов, с которыми можем столкнуться
-//Другими словами колайдер для каждого типа объекта
-typedef enum {
-    ColliderTypeActor,
-    ColliderTypeGround,
-    COlliderTypeBorder
-} ColliderType;
+#import "ObstacleManager.h"
 
 
 @interface GameScene : SKScene <SKPhysicsContactDelegate>
 
+@property (nonatomic, strong) ObstacleManager* obstacleManager;
 
 //Группа элементов земли
 @property (nonatomic, strong) SKNode* ground_01;
@@ -50,5 +44,8 @@ typedef enum {
 //Bach
 @property (nonatomic, strong) SKNode* bach;
 @property (nonatomic, strong) NSArray* runAnimation;
+
+
+- (void)spawnObstacle:(SKSpriteNode*) node;
 
 @end

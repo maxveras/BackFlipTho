@@ -8,8 +8,18 @@
 
 #import <Foundation/Foundation.h>
 
-@interface Common : NSObject
+//Перечисление типов объектов, с которыми можем столкнуться
+//Другими словами колайдер для каждого типа объекта
+typedef enum {
+    ColliderTypeActor,
+    ColliderTypeGround,
+    ColliderTypeObstacle
+} ColliderType;
 
-@property (assign, nonatomic) float baseLevelSpeed;
+
+static float baseLevelSpeed;
+static float groundHeight;
+
+@interface Common : NSObject
 
 @end
