@@ -9,7 +9,11 @@
 /* Begin PBXBuildFile section */
 		493FDAC81B617C13005B633F /* Budka.png in Resources */ = {isa = PBXBuildFile; fileRef = 493FDAC71B617C13005B633F /* Budka.png */; };
 		494DB9C41B5A875800D91F2A /* RunBach.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 494DB9C31B5A875800D91F2A /* RunBach.atlas */; };
+		49A1417E1B6AAA92000D4BE9 /* GameOverScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 49A1417D1B6AAA92000D4BE9 /* GameOverScene.sks */; };
+		49A141811B6AAB43000D4BE9 /* GameOverScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 49A141801B6AAB43000D4BE9 /* GameOverScene.m */; };
 		49D9170B1B617065009F0077 /* ObstacleManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 49D9170A1B617065009F0077 /* ObstacleManager.m */; };
+		49E1ED241B6A8F4F0037E3BD /* GameStartScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 49E1ED231B6A8F4F0037E3BD /* GameStartScene.sks */; };
+		49E1ED271B6A93090037E3BD /* GameStartSceneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49E1ED261B6A93090037E3BD /* GameStartSceneViewController.m */; };
 		84BE59061B53129C00B6B340 /* Common.m in Sources */ = {isa = PBXBuildFile; fileRef = 84BE59051B53129C00B6B340 /* Common.m */; };
 		8973B90E1B469EB000298218 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8973B90D1B469EB000298218 /* main.m */; };
 		8973B9111B469EB000298218 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8973B9101B469EB000298218 /* AppDelegate.m */; };
@@ -40,8 +44,14 @@
 /* Begin PBXFileReference section */
 		493FDAC71B617C13005B633F /* Budka.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Budka.png; sourceTree = "<group>"; };
 		494DB9C31B5A875800D91F2A /* RunBach.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = RunBach.atlas; sourceTree = "<group>"; };
+		49A1417D1B6AAA92000D4BE9 /* GameOverScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameOverScene.sks; sourceTree = "<group>"; };
+		49A1417F1B6AAB43000D4BE9 /* GameOverScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameOverScene.h; sourceTree = "<group>"; };
+		49A141801B6AAB43000D4BE9 /* GameOverScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameOverScene.m; sourceTree = "<group>"; };
 		49D917071B616418009F0077 /* ObstacleManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObstacleManager.h; sourceTree = "<group>"; };
 		49D9170A1B617065009F0077 /* ObstacleManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObstacleManager.m; sourceTree = "<group>"; };
+		49E1ED231B6A8F4F0037E3BD /* GameStartScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameStartScene.sks; sourceTree = "<group>"; };
+		49E1ED251B6A93090037E3BD /* GameStartSceneViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameStartSceneViewController.h; sourceTree = "<group>"; };
+		49E1ED261B6A93090037E3BD /* GameStartSceneViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameStartSceneViewController.m; sourceTree = "<group>"; };
 		84BE59041B53129C00B6B340 /* Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Common.h; sourceTree = "<group>"; };
 		84BE59051B53129C00B6B340 /* Common.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Common.m; sourceTree = "<group>"; };
 		8973B9081B469EB000298218 /* ThatBackFlipTho.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ThatBackFlipTho.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -84,6 +94,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		49E1ED281B6A931D0037E3BD /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				8973B91A1B469EB000298218 /* Main.storyboard */,
+				8973B91F1B469EB000298218 /* LaunchScreen.xib */,
+				8973B91D1B469EB000298218 /* Images.xcassets */,
+				494DB9C31B5A875800D91F2A /* RunBach.atlas */,
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
 		8973B8FF1B469EB000298218 = {
 			isa = PBXGroup;
 			children = (
@@ -104,22 +125,23 @@
 		8973B90A1B469EB000298218 /* ThatBackFlipTho */ = {
 			isa = PBXGroup;
 			children = (
-				494DB9C31B5A875800D91F2A /* RunBach.atlas */,
-				8973B90F1B469EB000298218 /* AppDelegate.h */,
-				8973B9101B469EB000298218 /* AppDelegate.m */,
+				8973B90B1B469EB000298218 /* Supporting Files */,
+				49E1ED281B6A931D0037E3BD /* Images */,
 				8973B9121B469EB000298218 /* GameScene.h */,
 				8973B9131B469EB000298218 /* GameScene.m */,
 				8973B9151B469EB000298218 /* GameScene.sks */,
 				8973B9171B469EB000298218 /* GameViewController.h */,
 				8973B9181B469EB000298218 /* GameViewController.m */,
-				8973B91A1B469EB000298218 /* Main.storyboard */,
-				8973B91D1B469EB000298218 /* Images.xcassets */,
-				8973B91F1B469EB000298218 /* LaunchScreen.xib */,
-				8973B90B1B469EB000298218 /* Supporting Files */,
 				84BE59041B53129C00B6B340 /* Common.h */,
 				84BE59051B53129C00B6B340 /* Common.m */,
 				49D917071B616418009F0077 /* ObstacleManager.h */,
 				49D9170A1B617065009F0077 /* ObstacleManager.m */,
+				49E1ED251B6A93090037E3BD /* GameStartSceneViewController.h */,
+				49E1ED261B6A93090037E3BD /* GameStartSceneViewController.m */,
+				49A1417D1B6AAA92000D4BE9 /* GameOverScene.sks */,
+				49E1ED231B6A8F4F0037E3BD /* GameStartScene.sks */,
+				49A1417F1B6AAB43000D4BE9 /* GameOverScene.h */,
+				49A141801B6AAB43000D4BE9 /* GameOverScene.m */,
 			);
 			path = ThatBackFlipTho;
 			sourceTree = "<group>";
@@ -130,6 +152,8 @@
 				8973B9361B46A40700298218 /* Images */,
 				8973B90C1B469EB000298218 /* Info.plist */,
 				8973B90D1B469EB000298218 /* main.m */,
+				8973B90F1B469EB000298218 /* AppDelegate.h */,
+				8973B9101B469EB000298218 /* AppDelegate.m */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -229,6 +253,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49A1417E1B6AAA92000D4BE9 /* GameOverScene.sks in Resources */,
+				49E1ED241B6A8F4F0037E3BD /* GameStartScene.sks in Resources */,
 				89A60FD51B513F65006CD6C7 /* ground.png in Resources */,
 				494DB9C41B5A875800D91F2A /* RunBach.atlas in Resources */,
 				89DAABCF1B51648100D6FBB3 /* city_bacground_first_layer.png in Resources */,
@@ -262,7 +288,9 @@
 				8973B9111B469EB000298218 /* AppDelegate.m in Sources */,
 				84BE59061B53129C00B6B340 /* Common.m in Sources */,
 				8973B9141B469EB000298218 /* GameScene.m in Sources */,
+				49E1ED271B6A93090037E3BD /* GameStartSceneViewController.m in Sources */,
 				49D9170B1B617065009F0077 /* ObstacleManager.m in Sources */,
+				49A141811B6AAB43000D4BE9 /* GameOverScene.m in Sources */,
 				8973B90E1B469EB000298218 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

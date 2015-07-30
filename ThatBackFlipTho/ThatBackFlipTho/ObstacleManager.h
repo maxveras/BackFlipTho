@@ -38,4 +38,7 @@
 //Функция возвращает последний спрайт
 - (SKSpriteNode*) lastObstacle;
 
+
+- (void)clearObstacles;
+
 @end

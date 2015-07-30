@@ -8,6 +8,7 @@
 
 #import "GameScene.h"
 #import "Common.h"
+#import "GameOverScene.h"
 
 static NSString* kActionRunAnimation = @"RunAnimation";
 static NSString* kActionRunAnimationLoop = @"RunAnimationLoop";
@@ -19,6 +20,7 @@ static CGFloat jumpHeight = 13.5f;
 @property (nonatomic, assign) BOOL onAir;
 @property (nonatomic, assign) CGFloat impuls;
 @property (nonatomic, strong) SKAction* runAction;
+@property (nonatomic, assign) BOOL ShotdownGame;
 @end
 
 #pragma mark - Game Scene Initialize
@@ -28,6 +30,7 @@ static CGFloat jumpHeight = 13.5f;
 -(void)didMoveToView:(SKView *)view {
     self.obstacleManager = [ObstacleManager getInstance];
     [self.obstacleManager setRootScene:self];
+    [self.obstacleManager clearObstacles];
     
     self.backgroundColor = [UIColor colorWithRed:(CGFloat)204/255 green:(CGFloat)240/255 blue:(CGFloat)253/255 alpha:1];
     self.onAir = NO;
@@ -49,7 +52,7 @@ static CGFloat jumpHeight = 13.5f;
 
 //---------------------------------------------------------------
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-    if(self.onAir == NO) {
+    if(self.onAir == NO && !self.ShotdownGame) {
         self.onAir = YES;
         self.impuls = jumpHeight;
         [self.bach removeActionForKey:kActionRunAnimationLoop];
@@ -68,11 +71,16 @@ static CGFloat jumpHeight = 13.5f;
             [self.bach runAction:self.runAction withKey:kActionRunAnimationLoop];
         self.bach.physicsBody.restitution = 0;
     }
+    if(contact.bodyB.categoryBitMask == ColliderTypeObstacle) {
+        self.ShotdownGame = YES;
+        [self gameOverBackflip];
+        [self performSelector:@selector(loadGameOverScene) withObject:nil afterDelay:2];
+    }
 }
 
 //---------------------------------------------------------------
 - (void) initActor {
-    _bach = [self childNodeWithName:@"bach"];
+    self.bach = [self childNodeWithName:@"bach"];
    // _bach.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:[[SKTexture textureWithImageNamed:@"kingBach1"] size]];
     if(!_bach.physicsBody)
         NSLog(@"Bach phys body do not inited");
@@ -113,11 +121,8 @@ static CGFloat jumpHeight = 13.5f;
 //---------------------------------------------------------------
 -(void)update:(CFTimeInterval)currentTime {
     [self updatePlayer:currentTime];
-    if(self.obstacleManager != NULL)
-        [self.obstacleManager update:currentTime];
-    else
-        NSLog(@"Obstacle is null");
-    
+    [self.obstacleManager update:currentTime];
+    {
     //Проверяем вышла ли земля за границы экрана а затем перекидываем е> вначало очереди на показ
     if([self checkOutFromScreen:_ground_01] == YES) {
         _ground_01.position = CGPointMake(_ground_02.position.x + _ground_02.frame.size.width, _ground_01.position.y);
@@ -165,6 +170,7 @@ static CGFloat jumpHeight = 13.5f;
     }
     if([self checkOutFromScreen:_cityFarBackgroundSecond_02] == YES) {
         _cityFarBackgroundSecond_02.position = CGPointMake(_cityFarBackgroundSecond_01.position.x + _cityFarBackgroundSecond_02.frame.size.width, _cityFarBackgroundSecond_02.position.y);
+    }
     }
     
 }
@@ -295,7 +301,7 @@ static CGFloat jumpHeight = 13.5f;
     [_cityFarBackgroundSecond_02 setPosition:CGPointMake(_cityFarBackgroundSecond_01.position.x + _cityFarBackgroundSecond_02.size.width, _groundHeight +  _cityFarBackgroundSecond_02.size.height / 2 +100)];
 }
 
-
+//---------------------------------------------------------------
 - (void)backflipTho {
     SKAction* flip = [SKAction rotateToAngle:M_PI * 720 / 360 duration:0.65];
     SKAction* backflipOffset = [SKAction moveByX:50 y:0 duration:0.3];
@@ -305,11 +311,34 @@ static CGFloat jumpHeight = 13.5f;
     [self.bach runAction:flip];
 }
 
+- (void)gameOverBackflip {
+    self.impuls = jumpHeight;
+    self.onAir = YES;
+    [self.bach removeActionForKey:kActionRunAnimationLoop];
+    SKAction* holdFrame = [SKAction animateWithTextures:[NSArray arrayWithObject:[SKTexture textureWithImageNamed:@"kingBach1"]] timePerFrame:0];
+    [self.bach runAction:holdFrame];
+    SKAction* flip = [SKAction rotateToAngle:M_PI * 720 / 180 duration: 1];
+    [self.bach runAction:flip];
+    
+    
+    self.bach.zPosition = 10000;
+    self.bach.physicsBody.contactTestBitMask = 0;
+    self.bach.physicsBody.collisionBitMask = 0;
+}
+
 
 
 - (void)spawnObstacle:(SKSpriteNode*) node {
     [self addChild:node];
 }
+
+
+
+- (void)loadGameOverScene {
+    GameOverScene* scene = [GameOverScene unarchiveFromFile:@"GameOverScene"];
+    [self.view presentScene:scene];
+}
+
 
 @end
 

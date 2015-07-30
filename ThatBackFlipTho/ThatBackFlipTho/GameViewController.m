@@ -8,6 +8,7 @@
 
 #import "GameViewController.h"
 #import "GameScene.h"
+#import "GameStartSceneViewController.h"
 
 @implementation SKScene (Unarchive)
 
@@ -40,12 +41,15 @@
     /* Sprite Kit applies additional optimizations to improve rendering performance */
     skView.ignoresSiblingOrder = YES;
     
+    
+    
     // Create and configure the scene.
-    GameScene *scene = [GameScene unarchiveFromFile:@"GameScene"];
-    scene.scaleMode = SKSceneScaleModeFill;
+    GameStartSceneViewController* startScene = [GameStartSceneViewController unarchiveFromFile:@"GameStartScene"];
+    //GameScene *scene = [GameScene unarchiveFromFile:@"GameStartScene"];
+    startScene.scaleMode = SKSceneScaleModeFill;
     
     // Present the scene.
-    [skView presentScene:scene];
+    [skView presentScene:startScene];
 }
 
 - (BOOL)shouldAutorotate

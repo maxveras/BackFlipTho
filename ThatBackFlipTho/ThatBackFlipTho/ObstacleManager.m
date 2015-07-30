@@ -21,9 +21,20 @@ static ObstacleManager* instance;
 @implementation ObstacleManager
 
 + (instancetype) getInstance {
-    if(instance == NULL)
+    if(instance == NULL) {
         return instance = [ObstacleManager new];
+    }
     return instance;
+}
+
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        _obstacles = [NSMutableArray array];
+        _obstacleDefaultRange = 100;
+    }
+    return self;
 }
 
 //-----------------------------------------------------------
@@ -32,7 +43,7 @@ static ObstacleManager* instance;
         return YES;
     
     SKSpriteNode* lastNode = [self lastObstacle];
-    if(SCREEN_WIDTH - lastNode.position.x >= self.obstacleDefaultRange)
+    if(SCREEN_WIDTH - lastNode.position.x + lastNode.size.width >= self.obstacleDefaultRange * 2)
         return YES;
     
     return NO;
@@ -53,21 +64,25 @@ static ObstacleManager* instance;
     [self.rootScene spawnObstacle:obstacle];
     //[self.scene addChild:obstacle];
     
+    CGSize obstacleSize = CGSizeMake(obstacle.size.width / 3.5, obstacle.size.height / 3.2);
+    obstacle.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:CGSizeMake(obstacle.size.width / 3.5, obstacle.size.height / 2.8)];
     obstacle.physicsBody.affectedByGravity = NO;
     obstacle.physicsBody.allowsRotation = NO;
     
-    obstacle.physicsBody.contactTestBitMask = ColliderTypeGround | ColliderTypeActor;
-    obstacle.physicsBody.collisionBitMask = ColliderTypeGround | ColliderTypeActor;
+    obstacle.physicsBody.contactTestBitMask = ColliderTypeActor;
+    obstacle.physicsBody.collisionBitMask = ColliderTypeActor;
     obstacle.physicsBody.categoryBitMask = ColliderTypeObstacle;
     
     
+    
     obstacle.anchorPoint = CGPointMake(0.5f, 0);
-    obstacle.position = CGPointMake(SCREEN_WIDTH + obstacle.frame.size.width, self.rootScene.groundHeight);
-    obstacle.size 
+    obstacle.size = CGSizeMake(obstacle.size.width / 3.5, obstacle.size.height / 3.2);
+    obstacle.position = CGPointMake(SCREEN_WIDTH + obstacle.frame.size.width * 3.5, self.rootScene.groundHeight - 25);
     
-    SKAction* moveObstacle = [SKAction moveToX:-obstacle.size.width * 2.0f duration:4];
+    
+    SKAction* moveObstacle = [SKAction moveToX:-obstacle.size.width * 2.0f duration:2.7];
     [obstacle runAction:moveObstacle];
-    
+    [self.obstacles addObject:obstacle];
     
    
     
@@ -94,5 +109,9 @@ static ObstacleManager* instance;
     }
 }
 
+
+- (void)clearObstacles {
+    [_obstacles removeAllObjects];
+}
 
 @end
