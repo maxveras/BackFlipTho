@@ -8,6 +8,7 @@
 
 #import "GameOverScene.h"
 #import "GameScene.h"
+#import "GameScore.h"
 
 @implementation SKScene (Unarchive)
 
@@ -28,6 +29,16 @@
 
 @implementation GameOverScene
 
+- (void)didMoveToView:(SKView *)view {
+    SKLabelNode* overallScore = (SKLabelNode*)[self.scene childNodeWithName:@"overallScore"];
+    SKLabelNode* currentScore = (SKLabelNode*)[self.scene childNodeWithName:@"currentScore"];
+    SKLabelNode* hightScore   = (SKLabelNode*)[self.scene childNodeWithName:@"hightScore"];
+    overallScore.text = [NSString stringWithFormat:@"Overall score: %ld", (long)_overallScore];
+    currentScore.text = [NSString stringWithFormat:@"Score %ld", (long)_currentScore];
+    hightScore.text   = [NSString stringWithFormat:@"High score %ld", (long)_highScore];
+}
+
+//-----------------------------------------------------------------
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     GameScene* gameScene = [GameScene unarchiveFromFile:@"GameScene"];    
     SKTransition* transition = [SKTransition doorsCloseHorizontalWithDuration:0.1];

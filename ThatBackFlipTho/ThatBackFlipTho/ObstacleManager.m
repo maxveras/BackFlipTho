@@ -65,7 +65,7 @@ static ObstacleManager* instance;
     //[self.scene addChild:obstacle];
     
     CGSize obstacleSize = CGSizeMake(obstacle.size.width / 3.5, obstacle.size.height / 3.2);
-    obstacle.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:CGSizeMake(obstacle.size.width / 3.5, obstacle.size.height / 2.8)];
+    obstacle.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:obstacleSize];
     obstacle.physicsBody.affectedByGravity = NO;
     obstacle.physicsBody.allowsRotation = NO;
     

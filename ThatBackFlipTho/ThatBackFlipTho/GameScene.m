@@ -9,6 +9,7 @@
 #import "GameScene.h"
 #import "Common.h"
 #import "GameOverScene.h"
+#import "GameScore.h"
 
 static NSString* kActionRunAnimation = @"RunAnimation";
 static NSString* kActionRunAnimationLoop = @"RunAnimationLoop";
@@ -31,6 +32,9 @@ static CGFloat jumpHeight = 13.5f;
     self.obstacleManager = [ObstacleManager getInstance];
     [self.obstacleManager setRootScene:self];
     [self.obstacleManager clearObstacles];
+    self.score = [[GameScore alloc] init];
+    self.scoreLabel = (SKLabelNode*)[self childNodeWithName:@"scoreLabel"];
+    //self.scoreLabel.fontName = @"Raanana";//@"Phosphate";
     
     self.backgroundColor = [UIColor colorWithRed:(CGFloat)204/255 green:(CGFloat)240/255 blue:(CGFloat)253/255 alpha:1];
     self.onAir = NO;
@@ -67,6 +71,11 @@ static CGFloat jumpHeight = 13.5f;
     if(self.onAir == YES && contact.bodyB.categoryBitMask == ColliderTypeGround) {
         self.onAir = NO;
         self.impuls = 0;
+        self.score.currentScore++;
+        if(self.score.currentScore > self.score.highScore)
+            self.score.highScore = self.score.currentScore;
+        self.scoreLabel.text = [NSString stringWithFormat:@"%ld", (long)self.score.currentScore];
+        NSLog(@"Currentscore %ld. Overall %ld", (long)_score.currentScore, (long)_score.overallScore);
         if(self.runAction)
             [self.bach runAction:self.runAction withKey:kActionRunAnimationLoop];
         self.bach.physicsBody.restitution = 0;
@@ -74,6 +83,7 @@ static CGFloat jumpHeight = 13.5f;
     if(contact.bodyB.categoryBitMask == ColliderTypeObstacle) {
         self.ShotdownGame = YES;
         [self gameOverBackflip];
+        [self.score saveOverallScore];
         [self performSelector:@selector(loadGameOverScene) withObject:nil afterDelay:2];
     }
 }
@@ -123,6 +133,8 @@ static CGFloat jumpHeight = 13.5f;
     [self updatePlayer:currentTime];
     [self.obstacleManager update:currentTime];
     {
+    
+        
     //Проверяем вышла ли земля за границы экрана а затем перекидываем е> вначало очереди на показ
     if([self checkOutFromScreen:_ground_01] == YES) {
         _ground_01.position = CGPointMake(_ground_02.position.x + _ground_02.frame.size.width, _ground_01.position.y);
@@ -131,6 +143,14 @@ static CGFloat jumpHeight = 13.5f;
         _ground_02.position = CGPointMake(_ground_01.position.x + _ground_01.frame.size.width, _ground_02.position.y);
     }
     
+    ////////////////////////////////////////////////////////////////////////
+    if([self checkOutFromScreen:_cityFirst_01] == YES) {
+        _cityFirst_01.position = CGPointMake(_cityFirst_02.position.x + _cityFirst_02.frame.size.width, _cityFirst_01.position.y);
+    }
+    if([self checkOutFromScreen:_cityFirst_02] == YES) {
+        _cityFirst_02.position = CGPointMake(_cityFirst_01.position.x + _cityFirst_01.frame.size.width, _cityFirst_02.position.y);
+    }
+        
     ////////////////////////////////////////////////////////////////////////
     if([self checkOutFromScreen:_cityBackgroundFirst_01] == YES) {
         _cityBackgroundFirst_01.position = CGPointMake(_cityBackgroundFirst_02.position.x + _cityBackgroundFirst_02.frame.size.width, _cityBackgroundFirst_01.position.y);
@@ -216,6 +236,9 @@ static CGFloat jumpHeight = 13.5f;
     self.cityFarBackgroundSecond_01 = [SKSpriteNode spriteNodeWithImageNamed:@"city_bacground_second_layer"];
     self.cityFarBackgroundSecond_02 = [SKSpriteNode spriteNodeWithImageNamed:@"city_bacground_second_layer"];
     
+    self.cityFirst_01               = [SKSpriteNode spriteNodeWithImageNamed:@"city_first_color_layer"];
+    self.cityFirst_02               = [SKSpriteNode spriteNodeWithImageNamed:@"city_first_color_layer"];
+    
     //Create a sprite actions
     SKAction* moveCityFirst_01 = [SKAction moveByX:-self.cityBackgroundFirst_01.frame.size.width * defaultGameSpeed y:0 duration:0.1 * self.cityBackgroundFirst_01.frame.size.width * 2];
     SKAction* moveCityFirst_02 = [SKAction moveByX:-self.cityBackgroundFirst_02.frame.size.width * defaultGameSpeed y:0 duration:0.1 * self.cityBackgroundFirst_02.frame.size.width * 2];
@@ -231,6 +254,10 @@ static CGFloat jumpHeight = 13.5f;
 
     SKAction* moveFarCitySecond_01 = [SKAction moveByX:-self.cityFarBackgroundSecond_01.frame.size.width * 5 y:0 duration:0.1 * self.cityFarBackgroundSecond_01.frame.size.width * 2];
     SKAction* moveFarCitySecond_02 = [SKAction moveByX:-self.cityFarBackgroundSecond_02.frame.size.width * 5 y:0 duration:0.1 * self.cityFarBackgroundSecond_02.frame.size.width * 2];
+    
+    
+    SKAction* moveCity_01 = [SKAction moveByX:-_cityFirst_01.frame.size.width * 5 y:0 duration:0.1 * _cityFirst_01.frame.size.width * 2];
+    SKAction* moveCity_02 = [SKAction moveByX:-self.cityFirst_02.frame.size.width * 5 y:0 duration:0.1 * self.cityFirst_02.frame.size.width * 2];
 
     
     //Run actions
@@ -248,6 +275,9 @@ static CGFloat jumpHeight = 13.5f;
     
     [self.cityFarBackgroundSecond_01 runAction:moveFarCitySecond_01];
     [self.cityFarBackgroundSecond_02 runAction:moveFarCitySecond_02];
+    
+//    [self.cityFirst_01 runAction:moveCity_01];
+//    [self.cityFirst_02 runAction:moveCity_02];
 }
 
 //----------------------------------------------------
@@ -270,6 +300,9 @@ static CGFloat jumpHeight = 13.5f;
     [self addChild:_cityBackgroundFirst_01];
     [self addChild:_cityBackgroundFirst_02];
     
+//    [self addChild:_cityFirst_01];
+//    [self addChild:_cityFirst_02];
+    
     //Assign initial position
     [_cityBackgroundFirst_01 setScale:0.5];
     [_cityBackgroundFirst_02 setScale:0.5];
@@ -280,6 +313,9 @@ static CGFloat jumpHeight = 13.5f;
     [_cityBackgroundThird_01 setScale:0.5];
     [_cityBackgroundThird_02 setScale:0.5];
 
+    
+//    [_cityFirst_01 setPosition:CGPointMake(_cityFirst_01.frame.size.width / 2, _groundHeight + _cityFirst_01.frame.size.height * 1.65)];
+//    [_cityFirst_02 setPosition:CGPointMake(_cityFirst_01.frame.origin.x + _cityFirst_01.frame.size.width, _groundHeight +  _cityFirst_02.frame.size.height * 1.65)];
     
     
     [_cityBackgroundFirst_01 setPosition:CGPointMake(_cityBackgroundFirst_01.frame.size.width / 2, _groundHeight + _cityBackgroundFirst_01.frame.size.height * 1.65)];
@@ -293,12 +329,12 @@ static CGFloat jumpHeight = 13.5f;
     [_cityBackgroundThird_02 setPosition:CGPointMake(_cityBackgroundThird_02.frame.origin.x + _cityBackgroundThird_02.frame.size.width, _groundHeight +  _cityBackgroundThird_02.frame.size.height)];
 //
 //    //Far1
-    [_cityFarBackgroundFirst_01 setPosition:CGPointMake(_cityFarBackgroundFirst_01.size.width / 2, _groundHeight * 2 + _cityFarBackgroundFirst_01.size.height)];
-    [_cityFarBackgroundFirst_02 setPosition:CGPointMake(_cityFarBackgroundFirst_02.position.x + _cityFarBackgroundFirst_02.size.width, _groundHeight * 2 +  _cityFarBackgroundFirst_02.size.height)];
+    [_cityFarBackgroundFirst_01 setPosition:CGPointMake(_cityFarBackgroundFirst_01.size.width / 2, _groundHeight * 4 + _cityFarBackgroundFirst_01.size.height / 1.2)];
+    [_cityFarBackgroundFirst_02 setPosition:CGPointMake(_cityFarBackgroundFirst_02.position.x + _cityFarBackgroundFirst_02.size.width, _groundHeight * 4 +  _cityFarBackgroundFirst_02.size.height / 1.2)];
     
     //Far2
-    [_cityFarBackgroundSecond_01 setPosition:CGPointMake(_cityFarBackgroundSecond_01.size.width / 2, _groundHeight + _cityFarBackgroundSecond_01.size.height / 2 + 100)];
-    [_cityFarBackgroundSecond_02 setPosition:CGPointMake(_cityFarBackgroundSecond_01.position.x + _cityFarBackgroundSecond_02.size.width, _groundHeight +  _cityFarBackgroundSecond_02.size.height / 2 +100)];
+    [_cityFarBackgroundSecond_01 setPosition:CGPointMake(_cityFarBackgroundSecond_01.size.width / 2, _groundHeight + _cityFarBackgroundSecond_01.size.height / 1.3)];
+    [_cityFarBackgroundSecond_02 setPosition:CGPointMake(_cityFarBackgroundSecond_01.position.x + _cityFarBackgroundSecond_02.size.width, _groundHeight +  _cityFarBackgroundSecond_02.size.height/ 1.3)];
 }
 
 //---------------------------------------------------------------
@@ -336,6 +372,9 @@ static CGFloat jumpHeight = 13.5f;
 
 - (void)loadGameOverScene {
     GameOverScene* scene = [GameOverScene unarchiveFromFile:@"GameOverScene"];
+    scene.overallScore = _score.overallScore;
+    scene.currentScore = _score.currentScore;
+    scene.highScore    = _score.highScore;
     [self.view presentScene:scene];
 }
 

@@ -13,4 +13,10 @@
 @end
 
 @interface GameOverScene : SKScene
+
+//Проброс из другой сцены
+@property(assign, nonatomic) NSInteger currentScore;
+@property(assign, nonatomic) NSInteger overallScore;
+@property(assign, nonatomic) NSInteger highScore;
+
 @end

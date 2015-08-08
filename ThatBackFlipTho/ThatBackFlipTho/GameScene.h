@@ -9,10 +9,15 @@
 #import <SpriteKit/SpriteKit.h>
 #import "ObstacleManager.h"
 
+@class GameScore;
 
 @interface GameScene : SKScene <SKPhysicsContactDelegate>
 
 @property (nonatomic, strong) ObstacleManager* obstacleManager;
+@property (nonatomic, strong) GameScore* score;
+
+//Score label
+@property (nonatomic, strong) SKLabelNode* scoreLabel;
 
 //Группа элементов земли
 @property (nonatomic, strong) SKNode* ground_01;
@@ -37,6 +42,10 @@
 //ближний слой города
 @property (nonatomic, strong) SKNode* cityBackgroundFirst_01;
 @property (nonatomic, strong) SKNode* cityBackgroundFirst_02;
+
+//Самый ближний слой
+@property (nonatomic, strong) SKNode* cityFirst_01;
+@property (nonatomic, strong) SKNode* cityFirst_02;
 
 
 @property (nonatomic, assign) CGFloat groundHeight;
