@@ -14,8 +14,9 @@
 		49B2D4FF1B7659B200C2C90C /* GameScore.m in Sources */ = {isa = PBXBuildFile; fileRef = 49B2D4FE1B7659B200C2C90C /* GameScore.m */; };
 		49B2D5011B7662F100C2C90C /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49B2D5001B7662F100C2C90C /* GameKit.framework */; };
 		49B2D5031B76631A00C2C90C /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49B2D5021B76631A00C2C90C /* StoreKit.framework */; };
-		49B2D5051B76743200C2C90C /* city_first_color_layer in Resources */ = {isa = PBXBuildFile; fileRef = 49B2D5041B76743200C2C90C /* city_first_color_layer */; };
+		49C5BE931B768F0F006224B7 /* city_first_color_layer.png in Resources */ = {isa = PBXBuildFile; fileRef = 49C5BE921B768F0F006224B7 /* city_first_color_layer.png */; };
 		49D9170B1B617065009F0077 /* ObstacleManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 49D9170A1B617065009F0077 /* ObstacleManager.m */; };
+		49DB83961B865983001DF23A /* city_cool_layer.png in Resources */ = {isa = PBXBuildFile; fileRef = 49DB83951B865983001DF23A /* city_cool_layer.png */; };
 		49E1ED241B6A8F4F0037E3BD /* GameStartScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 49E1ED231B6A8F4F0037E3BD /* GameStartScene.sks */; };
 		49E1ED271B6A93090037E3BD /* GameStartSceneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49E1ED261B6A93090037E3BD /* GameStartSceneViewController.m */; };
 		84BE59061B53129C00B6B340 /* Common.m in Sources */ = {isa = PBXBuildFile; fileRef = 84BE59051B53129C00B6B340 /* Common.m */; };
@@ -56,9 +57,10 @@
 		49B2D4FE1B7659B200C2C90C /* GameScore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameScore.m; sourceTree = "<group>"; };
 		49B2D5001B7662F100C2C90C /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		49B2D5021B76631A00C2C90C /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
-		49B2D5041B76743200C2C90C /* city_first_color_layer */ = {isa = PBXFileReference; lastKnownFileType = file; path = city_first_color_layer; sourceTree = "<group>"; };
+		49C5BE921B768F0F006224B7 /* city_first_color_layer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = city_first_color_layer.png; sourceTree = "<group>"; };
 		49D917071B616418009F0077 /* ObstacleManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObstacleManager.h; sourceTree = "<group>"; };
 		49D9170A1B617065009F0077 /* ObstacleManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObstacleManager.m; sourceTree = "<group>"; };
+		49DB83951B865983001DF23A /* city_cool_layer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = city_cool_layer.png; sourceTree = "<group>"; };
 		49E1ED231B6A8F4F0037E3BD /* GameStartScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameStartScene.sks; sourceTree = "<group>"; };
 		49E1ED251B6A93090037E3BD /* GameStartSceneViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameStartSceneViewController.h; sourceTree = "<group>"; };
 		49E1ED261B6A93090037E3BD /* GameStartSceneViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameStartSceneViewController.m; sourceTree = "<group>"; };
@@ -186,6 +188,7 @@
 		8973B9361B46A40700298218 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				49DB83951B865983001DF23A /* city_cool_layer.png */,
 				89A60FCE1B513EDF006CD6C7 /* city_bacground_first_layer.png */,
 				89A60FCF1B513EDF006CD6C7 /* city_bacground_second_layer.png */,
 				89A60FD01B513EDF006CD6C7 /* city_first_layer.png */,
@@ -193,7 +196,7 @@
 				89A60FD21B513EDF006CD6C7 /* city_tred_layer.png */,
 				89A60FD41B513F65006CD6C7 /* ground.png */,
 				493FDAC71B617C13005B633F /* Budka.png */,
-				49B2D5041B76743200C2C90C /* city_first_color_layer */,
+				49C5BE921B768F0F006224B7 /* city_first_color_layer.png */,
 			);
 			name = Images;
 			sourceTree = "<group>";
@@ -281,15 +284,16 @@
 			files = (
 				49A1417E1B6AAA92000D4BE9 /* GameOverScene.sks in Resources */,
 				49E1ED241B6A8F4F0037E3BD /* GameStartScene.sks in Resources */,
-				49B2D5051B76743200C2C90C /* city_first_color_layer in Resources */,
 				89A60FD51B513F65006CD6C7 /* ground.png in Resources */,
 				494DB9C41B5A875800D91F2A /* RunBach.atlas in Resources */,
 				89DAABCF1B51648100D6FBB3 /* city_bacground_first_layer.png in Resources */,
 				493FDAC81B617C13005B633F /* Budka.png in Resources */,
 				8973B9211B469EB000298218 /* LaunchScreen.xib in Resources */,
+				49DB83961B865983001DF23A /* city_cool_layer.png in Resources */,
 				89DAABCD1B51646F00D6FBB3 /* city_first_layer.png in Resources */,
 				8973B91E1B469EB000298218 /* Images.xcassets in Resources */,
 				89DAABD11B51648C00D6FBB3 /* city_tred_layer.png in Resources */,
+				49C5BE931B768F0F006224B7 /* city_first_color_layer.png in Resources */,
 				8973B9161B469EB000298218 /* GameScene.sks in Resources */,
 				89DAABCE1B51647E00D6FBB3 /* city_bacground_second_layer.png in Resources */,
 				89DAABD01B51648A00D6FBB3 /* city_second_layer.png in Resources */,
@@ -399,6 +403,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = PrefixHeader.pch;
@@ -462,6 +467,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = PrefixHeader.pch;

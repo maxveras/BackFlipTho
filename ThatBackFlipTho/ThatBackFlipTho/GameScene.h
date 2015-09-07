@@ -47,6 +47,10 @@
 @property (nonatomic, strong) SKNode* cityFirst_01;
 @property (nonatomic, strong) SKNode* cityFirst_02;
 
+//Самый крутой слой
+@property (nonatomic, strong) SKNode* cityCoolLayer_01;
+@property (nonatomic, strong) SKNode* cityCoolLayer_02;
+
 
 @property (nonatomic, assign) CGFloat groundHeight;
 

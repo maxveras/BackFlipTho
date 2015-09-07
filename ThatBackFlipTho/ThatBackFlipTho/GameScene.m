@@ -239,6 +239,9 @@ static CGFloat jumpHeight = 13.5f;
     self.cityFirst_01               = [SKSpriteNode spriteNodeWithImageNamed:@"city_first_color_layer"];
     self.cityFirst_02               = [SKSpriteNode spriteNodeWithImageNamed:@"city_first_color_layer"];
     
+    self.cityCoolLayer_01           = [SKSpriteNode spriteNodeWithImageNamed:@"city_cool_layer"];
+    self.cityCoolLayer_02           = [SKSpriteNode spriteNodeWithImageNamed:@"city_cool_layer"];
+    
     //Create a sprite actions
     SKAction* moveCityFirst_01 = [SKAction moveByX:-self.cityBackgroundFirst_01.frame.size.width * defaultGameSpeed y:0 duration:0.1 * self.cityBackgroundFirst_01.frame.size.width * 2];
     SKAction* moveCityFirst_02 = [SKAction moveByX:-self.cityBackgroundFirst_02.frame.size.width * defaultGameSpeed y:0 duration:0.1 * self.cityBackgroundFirst_02.frame.size.width * 2];
@@ -254,6 +257,9 @@ static CGFloat jumpHeight = 13.5f;
 
     SKAction* moveFarCitySecond_01 = [SKAction moveByX:-self.cityFarBackgroundSecond_01.frame.size.width * 5 y:0 duration:0.1 * self.cityFarBackgroundSecond_01.frame.size.width * 2];
     SKAction* moveFarCitySecond_02 = [SKAction moveByX:-self.cityFarBackgroundSecond_02.frame.size.width * 5 y:0 duration:0.1 * self.cityFarBackgroundSecond_02.frame.size.width * 2];
+    
+//    SKAction* moveCityFirst_01 = [SKAction moveByX:-self.cityBackgroundFirst_01.frame.size.width * defaultGameSpeed y:0 duration:0.1 * self.cityBackgroundFirst_01.frame.size.width * 2];
+//    SKAction* moveCityFirst_02 = [SKAction moveByX:-self.cityBackgroundFirst_02.frame.size.width * defaultGameSpeed y:0 duration:0.1 * self.cityBackgroundFirst_02.frame.size.width * 2];
     
     
     SKAction* moveCity_01 = [SKAction moveByX:-_cityFirst_01.frame.size.width * 5 y:0 duration:0.1 * _cityFirst_01.frame.size.width * 2];
@@ -276,8 +282,8 @@ static CGFloat jumpHeight = 13.5f;
     [self.cityFarBackgroundSecond_01 runAction:moveFarCitySecond_01];
     [self.cityFarBackgroundSecond_02 runAction:moveFarCitySecond_02];
     
-//    [self.cityFirst_01 runAction:moveCity_01];
-//    [self.cityFirst_02 runAction:moveCity_02];
+    [self.cityFirst_01 runAction:moveCity_01];
+    [self.cityFirst_02 runAction:moveCity_02];
 }
 
 //----------------------------------------------------
@@ -300,8 +306,8 @@ static CGFloat jumpHeight = 13.5f;
     [self addChild:_cityBackgroundFirst_01];
     [self addChild:_cityBackgroundFirst_02];
     
-//    [self addChild:_cityFirst_01];
-//    [self addChild:_cityFirst_02];
+    [self addChild:_cityCoolLayer_01];
+    [self addChild:_cityCoolLayer_02];;
     
     //Assign initial position
     [_cityBackgroundFirst_01 setScale:0.5];
